@@ -1,0 +1,1498 @@
+{title The Scam Manual}
+
+{center
+ {b The Scam Manual}
+
+ James B. Moen
+ September 12, 2016}
+
+{justify
+  Copyright © 2015 James B. Moen.
+  Permission is granted to copy, distribute, and/or modify this document under
+  the terms of the {c Gnu} Free Documentation License, Version 1.3 or any later
+  version published by the Free Software Foundation; with no Invariant
+  Sections, no Front-Cover Texts, and no Back-Cover Texts.
+  A copy of the license may be obtained at
+  {goto http://fsf.org/ {t <http://fsf.org/>.}}
+
+  This manual uses special characters.
+  Without proper rendering support, you may see question marks, boxes, or other
+  symbols in place of these characters.}
+
+{rule}
+
+{center {b Contents}}
+
+{layout
+ {row
+  {left {goto introduction 1.} \ }
+  {left Introduction.}}
+ {row
+  {left {goto characters 2.} \ }
+  {left Characters.}}
+ {row
+  {left {goto objects 3.} \ }
+  {left Objects.}}
+ {row
+  {left \ }
+  {layout
+   {row
+    {left {goto conses 3.1.} \ }
+    {left Conses.}}
+   {row
+    {left {goto eofs 3.2.} \ }
+    {left Eofs.}}
+   {row
+    {left {goto hooks 3.3.} \ }
+    {left Hooks.}}
+   {row
+    {left {goto integers 3.4.} \ }
+    {left Integers.}}
+   {row
+    {left {goto lambdas 3.5.} \ }
+    {left Lambdas.}}
+   {row
+    {left {goto lists 3.6.} \ }
+    {left Lists.}}
+   {row
+    {left {goto names 3.7.} \ }
+    {left Names.}}
+   {row
+    {left \ }
+    {layout
+     {row
+      {left {goto private 3.7.1.} \ }
+      {left Private names.}}
+     {row
+      {left {goto bindings 3.7.2.} \ }
+      {left Bindings.}}
+     {row
+      {left {goto boolean 3.7.3.} \ }
+      {left Booleans.}}}}
+   {row
+    {left {goto strings 3.8.} \ }
+    {left Strings.}}}}
+ {row
+  {left {goto procedures 4.} \ }
+  {left Procedures.}}
+ {row
+  {left \ }
+  {layout
+   {row
+    {left {goto errors 4.1.} \ }
+    {left Errors.}}
+   {row
+    {left {goto tests 4.2.} \ }
+    {left Tests.}}
+   {row
+    {left {goto primitives 4.3.} \ }
+    {left Primitives.}}
+   {row
+    {left \ }
+    {layout
+     {row
+      {left {goto and 4.3.1.} \ }
+      {left {t and}. \ \ }
+      {left {goto intNeg 4.3.25.} \ }
+      {left {t intNeg}. \ \ }
+      {left {goto objWrite 4.3.49.} \ }
+      {left {t objWrite}. \ \ }}
+     {row
+      {left {goto car 4.3.2.} \ }
+      {left {t car}. \ \ }
+      {left {goto intNot 4.3.26.} \ }
+      {left {t intNot}. \ \ }
+      {left {goto or 4.3.50.} \ }
+      {left {t or}. \ \ }}
+     {row
+      {left {goto caxr 4.3.3.} \ }
+      {left {t ca}{i x}{t r}. \ \ }
+      {left {goto intOr 4.3.27.} \ }
+      {left {t intOr}. \ \ }
+      {left {goto quit 4.3.51.} \ }
+      {left {t quit}. \ \ }}
+     {row
+      {left {goto catch 4.3.4.} \ }
+      {left {t catch}. \ \ }
+      {left {goto intSub 4.3.28.} \ }
+      {left {t intSub}. \ \ }
+      {left {goto quote 4.3.52.} \ }
+      {left {t quote}. \ \ }}
+     {row
+      {left {goto cdr 4.3.5.} \ }
+      {left {t cdr}. \ \ }
+      {left {goto intXor 4.3.29.} \ }
+      {left {t intXor}. \ \ }
+      {left {goto set 4.3.53.} \ }
+      {left {t set}. \ \ }}
+     {row
+      {left {goto cdxr 4.3.6.} \ }
+      {left {t cd}{i x}{t r}. \ \ }
+      {left {goto isCons 4.3.30.} \ }
+      {left {t isCons}. \ \ }
+      {left {goto setCar 4.3.54.} \ }
+      {left {t setCar}. \ \ }}
+     {row
+      {left {goto cons 4.3.7.} \ }
+      {left {t cons}. \ \ }
+      {left {goto isHook 4.3.31.} \ }
+      {left {t isHook}. \ \ }
+      {left {goto setCdr 4.3.55.} \ }
+      {left {t setCdr}. \ \ }}
+     {row
+      {left {goto cr 4.3.8.} \ }
+      {left {t cr}. \ \ }
+      {left {goto isEof 4.3.32.} \ }
+      {left {t isEof}. \ \ }
+      {left {goto strAdd 4.3.56.} \ }
+      {left {t strAdd}. \ \ }}
+     {row
+      {left {goto define 4.3.9.} \ }
+      {left {t define}. \ \ }
+      {left {goto isInt 4.3.33.} \ }
+      {left {t isInt}. \ \ }
+      {left {goto strDate 4.3.57.} \ }
+      {left {t strDate}. \ \ }}
+     {row
+      {left {goto first 4.3.10.} \ }
+      {left {t first}. \ \ }
+      {left {goto isLambda 4.3.34.} \ }
+      {left {t isLambda}. \ \ }
+      {left {goto strEq 4.3.58.} \ }
+      {left {t strEq}. \ \ }}
+     {row
+      {left {goto if 4.3.11.} \ }
+      {left {t if}. \ \ }
+      {left {goto isName 4.3.35.} \ }
+      {left {t isName}. \ \ }
+      {left {goto strGe 4.3.59.} \ }
+      {left {t strGe}. \ \ }}
+     {row
+      {left {goto imply 4.3.12.} \ }
+      {left {t imply}. \ \ }
+      {left {goto isNil 4.3.36.} \ }
+      {left {t isNil}. \ \ }
+      {left {goto strGt 4.3.60.} \ }
+      {left {t strGt}. \ \ }}
+     {row
+      {left {goto include 4.3.13.} \ }
+      {left {t include}. \ \ }
+      {left {goto isString 4.3.37.} \ }
+      {left {t isString}. \ \ }
+      {left {goto strLe 4.3.61.} \ }
+      {left {t strLe}. \ \ }}
+     {row
+      {left {goto intAdd 4.3.14.} \ }
+      {left {t intAdd}. \ \ }
+      {left {goto isGreekLambda 4.3.38.} \ }
+      {left {t isλ}. \ \ }
+      {left {goto strLen 4.3.62.} \ }
+      {left {t strLen}. \ \ }}
+     {row
+      {left {goto intAnd 4.3.15.} \ }
+      {left {t intAnd}. \ \ }
+      {left {goto lambda 4.3.39.} \ }
+      {left {t lambda}. \ \ }
+      {left {goto strLow 4.3.63.} \ }
+      {left {t strLow}. \ \ }}
+     {row
+      {left {goto intDiv 4.3.16.} \ }
+      {left {t intDiv}. \ \ }
+      {left {goto last 4.3.40.} \ }
+      {left {t last}. \ \ }
+      {left {goto strLt 4.3.64.} \ }
+      {left {t strLt}. \ \ }}
+     {row
+      {left {goto intEq 4.3.17.} \ }
+      {left {t intEq}. \ \ }
+      {left {goto let 4.3.41.} \ }
+      {left {t let}. \ \ }
+      {left {goto strName 4.3.65.} \ }
+      {left {t strName}. \ \ }}
+     {row
+      {left {goto intGe 4.3.18.} \ }
+      {left {t intGe}. \ \ }
+      {left {goto list 4.3.42.} \ }
+      {left {t list}. \ \ }
+      {left {goto strNe 4.3.66.} \ }
+      {left {t strNe}. \ \ }}
+     {row
+      {left {goto intGt 4.3.19.} \ }
+      {left {t intGt}. \ \ }
+      {left {goto load 4.3.43.} \ }
+      {left {t load}. \ \ }
+      {left {goto strRead 4.3.67.} \ }
+      {left {t strRead}. \ \ }}
+     {row
+      {left {goto intLe 4.3.20.} \ }
+      {left {t intLe}. \ \ }
+      {left {goto nameStr 4.3.44.} \ }
+      {left {t nameStr}. \ \ }
+      {left {goto strSub 4.3.68.} \ }
+      {left {t strSub}. \ \ }}
+     {row
+      {left {goto intLt 4.3.21.} \ }
+      {left {t intLt}. \ \ }
+      {left {goto not 4.3.45.} \ }
+      {left {t not}. \ \ }
+      {left {goto strUp 4.3.69.} \ }
+      {left {t strUp}. \ \ }}
+     {row
+      {left {goto intMod 4.3.22.} \ }
+      {left {t intMod}. \ \ }
+      {left {goto objEq 4.3.46.} \ }
+      {left {t objEq}. \ \ }
+      {left {goto strWrite 4.3.70.} \ }
+      {left {t strWrite}. \ \ }}
+     {row
+      {left {goto intMul 4.3.23.} \ }
+      {left {t intMul}. \ \ }
+      {left {goto objLen 4.3.47.} \ }
+      {left {t objLen}. \ \ }
+      {left {goto throw 4.3.71.} \ }
+      {left {t throw}. \ \ }}
+     {row
+      {left {goto intNe 4.3.24.} \ }
+      {left {t intNe}. \ \ }
+      {left {goto objNe 4.3.48.} \ }
+      {left {t objNe}. \ \ }
+      {left {goto greekLambda 4.3.72.} \ }
+      {left {t λ}. \ \ }}}}}}
+ {row
+  {left {goto programs 5.} \ }
+  {left Programs.}}
+ {row
+  {left {goto running 6.} \ }
+  {left Running Scam.}}
+ {row
+  {left {goto references 7.} \ }
+  {left References.}}
+ {row
+  {left \ }
+  {left \ }}}
+
+{rule}
+
+{label introduction}
+{left {b 1. Introduction.}}
+
+{narrow
+ {justify
+   {b scam} {i n.}
+   {b 1} [1960s+] a plan, a scheme.
+   {b 2} a large-scale plan to smuggle and distribute illegal drugs.
+   {b 3} (US) information (cf. {c low-down}).}
+ {right
+  {goto gre2000 {c [gre 2000]}}}}
+
+{justify
+  {i Scam} is an interpreter for a toy functional programming language that
+  resembles a subset of Scheme {goto spe2007 {c [spe\ 2007].}}
+  Scam programs are written in a parenthesized prefix notation.
+  They can perform computations with lists, names (like Scheme's symbols),
+  numbers (32-bit two's complement integers) and Unicode strings.
+  Variables are lexically scoped, and procedures are properly tail recursive.
+  Scam runs under Unix-like systems, such as {c Gnu}/Linux.
+
+  Scam was written in the experimental programming language {i Orson}
+  {goto moe2014 {c [moe\ 2014]}} as a test of the Orson compiler and parts of
+  the Orson library.
+  Since Scam is only a test, it omits many features that would be present in a
+  complete programming language.
+  However, it has been used by the author to implement a few simple
+  applications, such as a program that formats parts of web pages.
+
+  This manual gives a brief overview of Scam.
+  It is not a tutorial.
+  The reader is expected to be familiar with Scheme, or with another dialect of
+  Lisp, such as Common Lisp {goto gls1990 {c [gls\ 1990].}}}
+
+{rule}
+
+{label characters}
+{left {b 2. Characters.}}
+
+{justify
+  Scam reads and writes text using a 31-bit character set with the {c utf-8}
+  encoding.
+  This includes the familiar 7-bit {c ascii} character set and the 21-bit
+  Unicode character set {goto uni2006 {c [uni\ 2006]}} as subsets.
+  It is possible to use Scam with {c ascii} characters on systems that do not
+  support Unicode.
+
+  Certain characters are used by Scam as delimiters and punctuation.
+  They can be used as ordinary characters by prefixing them with backslashes.
+  For example, a double quote can be used as an ordinary character by writing
+  `{t \\"}'.
+  A backslash itself can be used as an ordinary character by writing
+  `{t \\\\}'.
+
+  Several common invisible characters may appear as letters prefixed by
+  backslashes, as in the programming language C {goto knr1988 {c [knr 1988].}}
+  Backslashed letters and the characters they represent are shown in the
+  following table.}
+
+{table
+ {row
+  {center {bc \ letter\ }}
+  {center {bc \ character\ }}
+  {center {bc \ letter\ }}
+  {center {bc \ character\ }}}
+ {row
+  {center {t \\A} or {t \\a}}
+  {left \ Alert (U+0007)}
+  {center {t \\N} or {t \\n}}
+  {left \ Line feed (U+000A)}}
+ {row
+  {center {t \\B} or {t \\b}}
+  {left \ Backspace (U+0008)}
+  {center {t \\R} or {t \\r}}
+  {left \ Return (U+000D)}}
+ {row
+  {center {t \\E} or {t \\e}}
+  {left \ Escape (U+001B)}
+  {center {t \\T} or {t \\t}}
+  {left \ Horizontal tab (U+0009)}}
+ {row
+  {center {t \\F} or {t \\f}}
+  {left \ Formfeed (U+000C)}
+  {center {t \\V} or {t \\v}}
+  {left \ Vertical tab (U+000B)}}}
+
+{justify
+  Any character may be written as `{t \\#}' followed by a series of one or more
+  digits `{t 0}' through `{t 9}' and Roman letters `{t A}' through `{t F}',
+  `{t a}' through `{t f}'.
+  The digits and letters denote the code for the character in hexadecimal, with
+  digits having the values 0 through 9, and letters having the values 10
+  through 15.
+  Codes range from 0 to 7FFFFFFF.
+  For example, the {goto strings string} {t "λ-calculus"} may also be written
+  as {t "\\#03BB-calculus"}, because the code for the character `{t λ}' is
+  03BB.
+
+  Any numeric character code may be optionally followed by `\\_', which is
+  ignored.
+  This is sometimes necessary to separate a character code from the rest of a
+  {goto names name} or a string.
+  For example, the string {t "\\#03BB"} has one character `{t λ}', but the
+  string {t "\\#03\\_BB"} has three: the first has the code 03, the second is
+  `{t B}', and the third is also `{t B}'.}
+
+{rule}
+
+{label objects}
+{left {b 3. Objects.}}
+
+{justify
+  Scam supports seven kinds of objects, called
+  {goto conses {i conses,}}
+  {goto eofs {i eofs,}}
+  {goto hooks {i hooks,}}
+  {goto integers {i integers,}}
+  {goto lambdas {i lambdas,}}
+  {goto names {i names,}}
+  and
+  {goto strings {i strings.}}
+  An eighth kind, called {goto lists {i lists,}} are constructed from conses.
+  All objects can be the {goto bindings} of names, can be passed as arguments
+  to {goto procedures procedures,} and can be written to text files.
+  All objects except circular lists, eofs, hooks, and lambdas can be read from
+  text files.
+
+  Whitespace (blanks and newlines) is ignored in the written representations of
+  objects, except where it is required as a separator.
+  Comments are treated as whitespace: each comment begins with a semicolon
+  `{t ;}' and ends with a newline.
+  Control characters (such as tabs) are also treated as whitespace, except for
+  a few that the operating system uses as signals.}
+
+{label conses}
+{left {b 3.1. Conses.}}
+
+{justify
+  A {i cons} is a pair of {goto objects objects,} called
+  (for historical reasons) the {i car} and the {i cdr.}
+  It is written as {t (}{i a}\ {b .}\ {i d}{t ),} where {i a} is the written
+  representation of the car, and {i d} is the written representation of the
+  cdr.}
+
+{label eofs}
+{left {b 3.2. Eofs.}}
+
+{justify
+  An {i eof} denotes the end of a text file.
+  A procedure that reads {goto objects} from a text file will return an eof
+  when there are no objects left to be read.
+  Scam writes an eof as {t [eof],} but this notation will cause an
+  {goto errors error} if it is read back in again.}
+
+{label hooks}
+{left {b 3.3. Hooks.}}
+
+{justify
+  A {i hook} is a procedure provided by Scam.
+  Scam writes a hook as {t [}{i h}\ {i a}{t ],} where {i h} is a series of
+  letters that identify the hook, and {i a} is the hexadecimal memory address
+  where the hook resides.
+  This notation will cause an {goto errors error} if it is read back in again.}
+
+{label integers}
+{left {b 3.4. Integers.}}
+
+{justify
+  An {i integer} is a two's complement integer between {t –2147483648} and
+  {t 2147483647,} inclusive.
+  It is written as a series of one or more decimal digits `{t 0}' through
+  `{t 9}'.
+  The first digit in the series may be optionally prefixed by a dash `{t –}',
+  indicating a negative number.}
+
+{label lambdas}
+{left {b 3.5. Lambdas.}}
+
+{justify
+  A {i lambda} is a procedure provided by a user program.
+  Scam writes a lambda as {t [closure}\ {i a}{t ],} where {i a} is the
+  hexadecimal memory address where the lambda resides.
+  This notation will cause an {goto errors error} if it is read back in again.}
+
+{label lists}
+{left {b 3.6. Lists.}}
+
+{justify
+  A {i list} is an ordered series of zero or more {goto objects objects,}
+  called its {i elements.}
+  It is written like this, where the subscripted {i o}'s are written
+  representations of the elements, separated by whitespace.}
+
+{center
+ {t (}{i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  The list is an abbreviation for a series of nested {goto conses conses:}}
+
+{center
+ {t (}{i o}{- 1} {b .} {t (}{i o}{- 2} ... {b .} {t (}{i o}{-i n} {b .} {t nil)} ... {t ))}}
+
+{justify
+  Such a list, whose rightmost cdr is the {goto names name}
+  {goto boolean {t nil,}} is called a {i proper list.}
+  An {i improper list} is one whose rightmost cdr is an object other than
+  {t nil.}
+  A proper list of zero elements may be written as {t (),} and is equivalent
+  to {t nil.}
+
+  Circular lists may be created by the procedures {goto {t setCar}} and
+  {goto setCdr {t setCdr.}}
+  When Scam writes a list, it will detect these circularities, and write each
+  one as {t [...].}
+  This notation for circularities will cause an error if it is read back in
+  again.}
+
+{label names}
+{left {b 3.7. Names.}}
+
+{justify
+  A {i name} is written as a series of one or more characters, other than
+  brackets `{t [}' and `{t ]}', dots `{b .}', double quotes `{t "}',
+  parentheses, and whitespace.
+  These and other characters may appear in names by prefixing them with
+  {goto characters backslashes.}
+
+  If two names are made up of the same characters, in the same order, then they
+  refer to the same {goto objects object} in memory.
+  Names may be therefore tested for equality by the procedure
+  {goto objEq {t objEq,}} which compares the addresses of two objects.
+  This does not necessarily work for objects other than names.}
+
+{label private}
+{left {b 3.7.1. Private names.}}
+
+{justify
+  If a {goto names name} begins with a colon `{t :}', then Scam automatically
+  prefixes it by the name of the text file being read when the name is created.
+  For example, if Scam is reading the file {t /home/jim/scam/sort.scam,} then
+  the name {t :partition} will be treated as if it was written
+  {t sort:partition.}
+  If a name that begins with a colon is read from the standard input device,
+  such as a keyboard, then the name is unchanged.
+  This convention allows each Scam file to have its own private names that are
+  distinct from the names in other files.
+  Note that this is {i not} how colons work in Common Lisp
+  {goto gls1990 {c [gls 1990].}}}
+
+{label bindings}
+{left {b 3.7.2. Bindings.}}
+
+{justify
+  Each {goto names name} is optionally associated with an
+  {goto objects object,} called the name's {i binding.}
+  If a name has a binding, then it is said to be {i bound,} otherwise it is
+  said to be {i unbound.}
+
+  The act of associating a name with an object is called {i binding} the name
+  to the object.
+  Most (but not all) names are initially unbound when Scam begins running.
+  A name may be bound to many different objects as a Scam program runs, and
+  may alternate between being bound and unbound.}
+
+{label boolean}
+{left {b 3.7.3. Booleans.}}
+
+{justify
+  The {goto names name} {t nil} is initially {goto bindings bound} to itself.
+  It represents both a proper {goto lists list} of zero elements, and a Boolean
+  {i false} value.
+  Any {goto objects object} other than {t nil} represents a Boolean {i true}
+  value.
+  The name {t true} is also initially bound to itself.
+  It is often convenient to use {t true} as a Boolean {i true} value, even
+  though any object other than {t nil} would suffice.}
+
+{label strings}
+{left {b 3.8. Strings.}}
+
+{justify
+  A {i string} starts with a double quote `{t "}', is followed by zero or more
+  characters other than newlines and double quotes, and ends with another
+  double quote.
+  The {i empty string,} with zero characters, is written as two adjacent
+  double quotes, `{t ""}'.
+  Double quotes themselves, and any other characters, may appear in strings by
+  prefixing them with {goto characters backslashes.}}
+
+{rule}
+
+{label procedures}
+{left {b 4. Procedures.}}
+
+{justify
+  A {i procedure} is either a {goto hooks hook} or a {goto lambdas lambda.}
+  It may be {i applied} to zero or more {goto objects objects,} called its
+  {i arguments.}
+  An application of a procedure {i p} to its arguments, the subscripted
+  {i a}'s, is written as a proper {goto lists list:}}
+
+{center
+ {t (}{i p} {i a}{- 1} {i a}{- 2} ... {i a}{-i n}{t )}}
+
+{justify
+  The application either {i returns} exactly one object, called its {i value,}
+  or else returns no value at all.
+  An application does not return a value if it is in {goto errors error,} or if
+  it applies {goto throw {t throw}.}}
+
+{label errors}
+{left {b 4.1. Errors.}}
+
+{justify
+  Applying a {goto procedures procedure} with the wrong types of arguments,
+  with the wrong number of arguments, or both, will cause an error.
+  For most errors, Scam applies {goto throw {t throw,}} which terminates the
+  most recently executing application of {goto catch {t catch.}}
+  If no application of {t catch} is executing when the error occurs, then a
+  message will be written to standard output, and control will pass back to
+  Scam.}
+
+{label tests}
+{left {b 4.2. Tests.}}
+
+{justify
+  If a {goto procedures procedure} is said to {i test for} something, then it
+  will return either {goto boolean {t nil}} or {goto boolean {t true,}}
+  depending on whether its arguments have the property being tested for.
+  By convention, the names of most such procedures begin with {tt is.}
+  For example, {goto {t isCons}} tests if its argument is a
+  {goto conses cons.}}
+
+{label primitives}
+{left {b 4.3. Primitives.}}
+
+{justify
+  Scam provides many primitive procedures.
+  Each primitive procedure is implemented as a {goto hooks hook.}
+  {goto names Names} are {goto bindings bound} to these hooks so they may be
+  used in programs.
+  These names may be rebound to other objects.
+
+  The next few sections describe all of Scam's primitive procedures.
+  The title of each section shows an application of the primitive procedure
+  that the section describes.
+  The {goto names} shown as the application's arguments describe their expected
+  types, as in the following table.}
+
+{table
+ {row
+  {center \ {bc argument} \ }
+  {center \ {bc expected type} \ }}
+ {row
+  {center {i b} or {i o}}
+  {left \ Any {goto objects object.}}}
+ {row
+  {center {i c}}
+  {left \ A {goto conses cons.}}}
+ {row
+  {center {i k}}
+  {left \ An {goto integers integer.}}}
+ {row
+  {center {i n}}
+  {left \ A {goto names name.}}}
+ {row
+  {center {i p}}
+  {left \ A {goto procedures procedure.}}}
+ {row
+  {center {i s}}
+  {left \ A {goto strings string.}}}}
+
+{justify
+  For example, the section titled {t (car}\ {i c}{t )} describes a primitive
+  procedure to which the name {goto {t car}} is bound.
+  This procedure expects one argument {i c,} which must be a
+  {goto conses cons.}}
+
+{label and}
+{left {b 4.3.1.} {t (and} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments in order of their appearance.
+  If one of the arguments returns {goto boolean {t nil,}} then return {t nil}
+  immediately without evaluating the rest.
+  Otherwise return the value of the last argument.
+  The application {t (and)} returns {goto boolean {t true.}}}
+
+{label car}
+{left {b 4.3.2.} {t (car} {i c}{t )}}
+
+{justify
+  Return the {t car} of the {goto conses cons} {i c.}}
+
+{label caxr}
+{left {b 4.3.3.} {t (ca}{i x}{t r}\ {i c}{t )}}
+
+{justify
+  Equivalent to {t (car}\ {t (c}{i x}{t r}\ {i c}{t )),} where {i x} is a
+  series of one or more {t a}'s and {t d}'s.
+  See {goto {t car}} and {goto cdr {t cdr.}}}
+
+{label catch}
+{left {b 4.3.4.} {t (catch} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  If none of the arguments applies {goto throw {t throw,}} then evaluate the
+  arguments in order of their appearance, and return the value of the last
+  argument, as if they appeared in {goto last {t last.}}
+  If one of the arguments evaluates {t (throw}\ {i b}{t )} while it is not
+  evaluating another application of {t catch,} then terminate the application
+  of {t catch} immediately, and return the value of {i b.}}
+
+{label cdr}
+{left {b 4.3.5.} {t (cdr} {i c}{t )}}
+
+{justify
+  Return the cdr of the {goto conses cons} {i c.}}
+
+{label cdxr}
+{left {b 4.3.6.} {t (cd}{i x}{t r}\ {i c}{t ).}}
+
+{justify
+  Equivalent to {t (cdr}\ {t (c}{i x}{t r}\ {i c}{t )),} where {i x} is a
+  series of one or more {t a}'s and {t d}'s.
+  See {goto {t car}} and {goto cdr {t cdr.}}}
+
+{label cons}
+{left {b 4.3.7.} {t (cons} {i o}{- 1} {i o}{- 2}{t )}}
+
+{justify
+  Return a {goto conses cons} whose car is the value of the first argument, and
+  whose cdr is the value of the second.
+  See {goto {t car}} and {goto cdr {t cdr.}}}
+
+{label cr}
+{left {b 4.3.8.} {t (cr}\ {i o}{t )}}
+
+{justify
+  Return {i o.}}
+
+{label define}
+{left {b 4.3.9.} {t (define} {i n} {i o}{t )}}
+
+{justify
+  Equivalent to {t (set}\ {i n}\ {i o}{t ).}
+  See {goto set {t set.}}}
+
+{label first}
+{left {b 4.3.10.} {t (first} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments in order of their appearance, and return the value of
+  the first argument.
+  The application {t (first)} returns {goto boolean {t nil.}}}
+
+{label if}
+{left {b 4.3.11.} {t (if} {i o}{- 1} {i o}{- 2} {i o}{- 3}{t )}}
+
+{justify
+  Evaluate the first argument.
+  If it returns {goto boolean {t nil,}} then evaluate the third argument and
+  return its value.
+  If it returns an {goto objects object} other than {t nil,} then evaluate the
+  second argument
+  and return its value instead.
+  The application {t (if}\ {i b}\ {i o}{t )} is equivalent to
+  {t (if}\ {i b}\ {i o}\ {t nil)}.}
+
+{label imply}
+{left {b 4.3.12.} {t (imply} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments, except the last, in order of appearance.
+  If one of the arguments returns {goto boolean {t nil,}} then return
+  {goto boolean {t true}} immediately, without evaluating the rest.
+  Otherwise evaluate the last argument and return its value.}
+
+{label include}
+{left {b 4.3.13.} {t (include} {i s}{t )}}
+
+{justify
+  If {i s} has already appeared in a call to {t include,} then do nothing.
+  Otherwise {goto {t load}} the file whose pathname is {i s.}
+  In either case, return {i s.}}
+
+{label intAdd}
+{left {b 4.3.14.} {t (intAdd} {i k}{- 1} {i k}{- 2} ... {i k}{-i n}{t )}}
+
+{justify
+  Add the {goto integers integer} arguments in order of their appearance, and
+  return the resulting integer.
+  The application {t (intAdd)} returns {t 0,} and the application
+  {t (intAdd}\ {i k}{t )} returns the value of {i k.}}
+
+{label intAnd}
+{left {b 4.3.15.} {t (intAnd} {i k}{- 1} {i k}{- 2} ... {i k}{-i n}{t )}}
+
+{justify
+  Compute the bitwise logical {c and} of the {goto integers integer} arguments,
+  and return the resulting integer.
+  The application {t (intAnd)} returns {t –1,} and the application
+  {t (intAnd}\ {i k}{t )} returns the value of {i k.}}
+
+{label intDiv}
+{left {b 4.3.16.} {t (intDiv} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  Divide the first {goto integers integer} by the second, and return the
+  resulting integer.
+  It is an {goto errors error} if the second integer is {t 0.}}
+
+{label intEq}
+{left {b 4.3.17.} {t (intEq} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  {goto tests Test} if the two {goto integers} are equal.}
+
+{label intGe}
+{left {b 4.3.18.} {t (intGe} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if the first {goto integers integer} is greater than or
+ equal to the second.}
+
+{label intGt}
+{left {b 4.3.19.} {t (intGt} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if the first {goto integers integer} is greater than the
+ second.}
+
+{label intLe}
+{left {b 4.3.20.} {t (intLe} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if the first {goto integers integer} is less than or equal
+ to the second.}
+
+{label intLt}
+{left {b 4.3.21.} {t (intLt} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if the first {goto integers integer} is less than the
+ second.}
+
+{label intMod}
+{left {b 4.3.22.} {t (intMod} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  Return the remainder after dividing the first {goto integers integer} by the
+  second.
+  It is an {goto errors error} if the second integer is {t 0.}}
+
+{label intMul}
+{left {b 4.3.23.} {t (intMul} {i k}{- 1} {i k}{- 2} ... {i k}{-i n}{t )}}
+
+{justify
+  Multiply the {goto integers integer} arguments in order of their appearance,
+  and return the resulting integer.
+  The application {t (intMul)} returns {t 1,} and the application
+  {t (intMul}\ {i k}{t )} returns the value of {i k.}}
+
+{label intNe}
+{left {b 4.3.24.} {t (intNe} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  {goto tests Test} if two {goto integers} are not equal.}
+
+{label intNeg}
+{left {b 4.3.25.} {t (intNeg} {i k}{t )}}
+
+{justify
+  Return the {goto integers integer} {i k} with the opposite of its original
+  sign.}
+
+{label intNot}
+{left {b 4.3.26.} {t (intNot} {i k}{t )}}
+
+{justify
+  Return the bitwise logical {c not} of the {goto integers integer} {i k.}}
+
+{label intOr}
+{left {b 4.3.27.} {t (intOr} {i k}{- 1} {i k}{- 2} ... {i k}{-i n}{t )}}
+
+{justify
+  Compute the bitwise logical {c or} of the {goto integers integer}
+  arguments, and return the resulting integer.
+  The application {t (intOr)} returns {t 0,} and the application
+  {t (intOr}\ {i k}{t )} returns the value of {i k.}}
+
+{label intSub}
+{left {b 4.3.28.} {t (intSub} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  Subtract the first {goto integers integer} from the second and return the
+  resulting integer.}
+
+{label intXor}
+{left {b 4.3.29.} {t (intXor} {i k}{- 1} {i k}{- 2} ... {i k}{-i n}{t )}}
+
+{justify
+  Compute the bitwise logical exclusive {c or} of the {goto integers integer}
+  arguments, and return the resulting integer.
+  The application {t (intXor)} returns {t –1}, and the application
+  {t (intXor}\ {i k}{t )} returns the value of {i k.}}
+
+{label isCons}
+{left {b 4.3.30.} {t (isCons} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is a {goto conses cons.}}
+
+{label isHook}
+{left {b 4.3.31.} {t (isHook} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is a {goto hooks hook.}}
+
+{label isEof}
+{left {b 4.3.32.} {t (isEof} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is an {goto eofs eof.}}
+
+{label isInt}
+{left {b 4.3.33.} {t (isInt} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is an {goto integers integer.}}
+
+{label isLambda}
+{left {b 4.3.34.} {t (isLambda} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is a {goto lambdas lambda.}}
+
+{label isName}
+{left {b 4.3.35.} {t (isName} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is a {goto names name.}}
+
+{label isNil}
+{left {b 4.3.36.} {t (isNil} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is {goto boolean {t nil.}}
+ See {goto not {t not.}}}
+
+{label isString}
+{left {b 4.3.37.} {t (isString} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is a {goto strings string.}}
+
+{label isGreekLambda}
+{left {b 4.3.38.} {t (isλ} {i o}{t )}}
+
+{justify
+  Test if {i o} is a {goto lambdas lambda.}
+  Equivalent to {t (isLambda} {i o}{t ).}}
+
+{label lambda}
+{left {b 4.3.39.} {t (lambda} {t (}{i n}{- 1} {i n}{- 2} ... {i n}{-i m}{t )} {i b}{- 1} {i b}{- 2} ... {i b}{-i n}{t )}}
+
+{justify
+  Return a new {goto lambdas lambda} whose parameters are the subscripted
+  {i n}'s.
+  When the lambda is applied, its parameters are {goto bindings bound} to their
+  corresponding arguments.
+  The subscripted {i b}'s are then evaluated in order of appearance, as if they
+  appeared in an application to {goto last {t last.}}
+  The application then restores the parameters to their original bindings (or
+  lack of bindings) and returns the value of the last subscripted {i b.}
+  Also see {goto greekLambda {t λ.}}
+
+  There must be at least one subscripted {i b,} but there may be zero
+  subscripted {i n}'s, so that {t (lambda}\ {t ()}\ {i b}{t )} returns a
+  lambda with no parameters.
+  It is an {goto errors error} if any subscripted {i n} appears more than once
+  as a parameter in a single call to {t lambda.}}
+
+{label last}
+{left {b 4.3.40.} {t (last} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments in order of their appearance, and return the value of
+  the last one.
+  The application {t (last)} returns {goto boolean {t nil,}} and the
+  application {t (last}\ {i o}{t )} returns the value of {i o.}}
+
+{label let}
+{left {b 4.3.41.} {t (let} {t ((}{i n}{- 1} {i o}{- 1}{t )} {t (}{i n}{- 2} {i o}{- 2}{t )} ... {t (}{i n}{- {i m}} {i o}{- {i m}}{t ))} {i b}{- 1} {i b}{- 2} ... {i b}{- {i n}}{t )}}
+
+{justify
+  Simultaneously {goto bindings bind} each subscripted {i n} to the value of
+  its corresponding subscripted {i o.}
+  Then evaluate the subscripted {i b}'s in order of their appearance, as if
+  they appeared in an application of {goto last {t last.}}
+  Finally, restore the parameters to their original bindings (or lack of
+  bindings) and return the value of the last subscripted {i b.}}
+
+{label list}
+{left {b 4.3.42.} {t (list} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments in order of their appearance and return a
+  {goto lists list} whose elements are the values of these arguments.
+  The application {t (list)} returns {t nil.}}
+
+{label load}
+{left {b 4.3.43.} {t (load} {i s}{t )}}
+
+{justify
+  Open a file whose pathname is {i s.}
+  The file must have the suffix {t .scam.}
+  Read a Scam program from this file and evaluate it, then close the file and
+  return {i s.}
+  It is an {goto errors error} if the file cannot be opened, if the Scam
+  program read from the file has errors, or if the file cannot be closed.}
+
+{label nameStr}
+{left {b 4.3.44.} {t (nameStr} {i n}{t )}}
+
+{justify
+  Return a {goto strings string} whose characters are those of the
+  {goto names name} {i n.}}
+
+{label not}
+{left {b 4.3.45.} {t (not} {i o}{t )}}
+
+{justify
+ {goto tests Test} if {i o} is {goto boolean {t nil.}}
+ See {goto isNil {t isNil.}}}
+
+{label objEq}
+{left {b 4.3.46.} {t (objEq} {i o}{- 1} {i o}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if two {goto objects} reside at the same memory address:
+ that is, test if they are identical objects.}
+
+{label objLen}
+{left {b 4.3.47.} {t (objLen} {i o}{t )}}
+
+{justify
+  If the {goto objects object} {i o} is a {goto lists list,} then return the
+  number of elements in the list, an {goto integers integer.}
+  The number of elements in the empty list {t nil} or {t ()} is {t 0.}
+  It is an {goto errors error} if the list appears to have an infinite number
+  of elements because it is circular.
+  If {i o} is not a list, then return {t 0.}}
+
+{label objNe}
+{left {b 4.3.48.} {t (objNe} {i o}{- 1} {i o}{- 2}{t )}}
+
+{justify
+  {goto tests Test} if two {goto objects} reside at different memory addresses:
+  that is, test if they are not identical objects.}
+
+{label objWrite}
+{left {b 4.3.49.} {t (objWrite} {i o}{t )}}
+
+{justify
+  Write the {goto objects object} {i o} to the standard output device, in such
+  a way that it may be read back in again.}
+
+{label or}
+{left {b 4.3.50.} {t (or} {i o}{- 1} {i o}{- 2} ... {i o}{-i n}{t )}}
+
+{justify
+  Evaluate the arguments in order of their appearance.
+  If one of the arguments returns a value other than {goto boolean {t nil,}}
+  then return the value of that argument immediately, without evaluating the
+  rest.
+  Otherwise return {t nil.}
+  The application {t (or)} returns {t nil.}}
+
+{label quit}
+{left {b 4.3.51.} {t (quit} {i k}{t )}}
+
+{justify
+  Halt Scam and pass the value of the {goto integers integer} {i k} back to
+  the operating system.
+  By convention, passing {t 0} to the operating system indicates that Scam
+  has halted successfully, and an integer other than {t 0} indicates that it
+  has halted with an error.
+  The application {t (quit)} is equivalent to {t (quit}\ {t 0).}}
+
+{label quote}
+{left {b 4.3.52.} {t (quote} {i o}{t )}}
+
+{justify
+  Return {i o} without evaluating it.
+  The application {t (quote}\ {i o}{t )} may be abbreviated as {t `}{i o} (with
+  an open quote) or as {t '}{i o} (with a closing quote).
+  Note that an open quote does not act the way it does in Common Lisp
+  {goto gls1990 {c [gls 1990.]}}}
+
+{label set}
+{left {b 4.3.53.} {t (set} {i n} {i o}{t )}}
+
+{justify
+  Bind the unevaluated name {i n} to the value returned by evaluating the
+  {goto objects object} {i o.}}
+
+{label setCar}
+{left {b 4.3.54.} {t (setCar} {i c} {i o}{t )}}
+
+{justify
+  Change the car of the {goto conses cons} {i c} to the {goto objects object}
+  {i o,} and return {i o.}
+  This may be used to create circular {goto lists lists.}}
+
+{label setCdr}
+{left {b 4.3.55.} {t (setCdr} {i c} {i o}{t )}}
+
+{justify
+  Change the cdr of the {goto conses cons} {i s} to the {goto objects object}
+  {i o,} and return {i o.}
+  This may be used to create circular {goto lists lists.}}
+
+{label strAdd}
+{left {b 4.3.56.} {t (strAdd} {i s}{- 1} {i s}{- 2} ... {i s}{-i n}{t )}}
+
+{justify
+  Concatenate the {goto strings} returned by the arguments into one string, and
+  return the resulting string.
+  The application {t (strAdd)} returns the empty string {t "",} and the
+  application {t (strAdd}\ {i s}{t )} returns the string {i s.}}
+
+{label strDate}
+{left {b 4.3.57.} {t (strDate)}}
+
+{justify
+ Return a {goto strings string} containing the day of the week, the date, the
+ time, and the time zone.
+ For example,
+ {t "Monday,}\ {t May}\ {t 16,}\ {t 2011}\ {t at}\ {t 8:30}\ {t PM}\ {t CDT".}}
+
+{label strEq}
+{left {b 4.3.58.} {t (strEq} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if two {goto strings} are lexicographically equal.}
+
+{label strGe}
+{left {b 4.3.59.} {t (strGe} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if one {goto strings string} is lexicographically greater
+ than or equal to another.}
+
+{label strGt}
+{left {b 4.3.60.} {t (strGt} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if one {goto strings string} is lexicographically greater
+ than another.}
+
+{label strLe}
+{left {b 4.3.61.} {t (strLe} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if one {goto strings string} is lexicographically less than
+ or equal to another.}
+
+{label strLen}
+{left {b 4.3.62.} {t (strLen} {i s}{t )}}
+
+{justify
+  Return the {goto integers integer} number of characters in the
+  {goto strings string} {i s.}}
+
+{label strLow}
+{left {b 4.3.63.} {t (strLow} {i s}{t )}}
+
+{justify
+  Return a {goto strings string} like {i s} in which all upper case Roman
+  letters ({t A}–{t Z}) are converted to lower case.
+  Also see {goto strUp {t strUp.}}}
+
+{label strLt}
+{left {b 4.3.64.} {t (strLt} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if one {goto strings string} is lexicographically less than
+ another.}
+
+{label strName}
+{left {b 4.3.65.} {t (strName} {i s}{t )}}
+
+{justify
+  Return a {goto names name} whose characters are those of the
+  {goto strings string} {i s.}}
+
+{label strNe}
+{left {b 4.3.66.} {t (strNe} {i s}{- 1} {i s}{- 2}{t )}}
+
+{justify
+ {goto tests Test} if two {goto strings} are lexicographically unequal.}
+
+{label strRead}
+{left {b 4.3.67.} {t (strRead)}}
+
+{justify
+ Read a line of text from the standard input device, and return it as a
+ {goto strings string.}
+ Return an {goto eofs eof} if there are no more lines left to read.}
+
+{label strSub}
+{left {b 4.3.68.} {t (strSub} {i s} {i k}{- 1} {i k}{- 2}{t )}}
+
+{justify
+  Return a substring of the {goto strings string} {i s} starting at the first
+  {goto integers integer} index, and ending with the second integer index minus
+  1.
+  (Common Lisp {goto gls1990 {c [gls 1990]}} indexes also work this way.)
+  It is an {goto errors error} if the indexes are out of range for the string
+  {i s.}
+  The application {t (strSub}\ {i s}\ {i k}{t )} is equivalent to
+  {t (strSub}\ {i s}\ {i k}\ {t (strLen}\ {i s}{t )),} except that {i s} is
+  evaluated only once.
+  See {goto {t strLen}} and {goto strSub {t strSub.}}}
+
+{label strUp}
+{left {b 4.3.69.} {t (strUp} {i s}{t )}}
+
+{justify
+  Return a {goto strings string} like {i s} in which all lower case Roman
+  letters ({t a}–{t z}) are converted to upper case.
+  Also see {goto strLow {t strLow.}}}
+
+{label strWrite}
+{left {b 4.3.70.} {t (strWrite} {i s}{t )}}
+
+{justify
+  Write the {goto strings string} {i s} to the standard output device, without
+  any punctuation such as double quotes `{t "}' or backslashes `{t \\}'.
+  Then return {i s.}}
+
+{label throw}
+{left {b 4.3.71.} {t (throw} {i o}{t )}}
+
+{justify
+  Return the value of {i o} from the most recent application of
+  {goto {t catch}} that is currently executing.
+  It is an {goto errors error} if no application of {t catch} is being
+  executed.}
+
+{label greekLambda}
+{left {b 4.3.72.} {t (λ} {t (}{i n}{- 1} {i n}{- 2} ... {i n}{-i m}{t )} {i b}{- 1} {i b}{- 2} ... {i b}{-i n}{t )}}
+
+{justify
+  Equivalent to {t (lambda} {t (}{i n}{- 1} {i n}{- 2} ... {i n}{-i m}{t )} {i b}{- 1} {i b}{- 2} ... {i b}{-i n}{t ).}
+  See {goto lambda {t lambda.}}}
+
+{rule}
+
+{label programs}
+{left {b 5. Programs.}}
+
+{justify
+  A Scam program is typically a series of {goto define {t define}'s} that
+  {goto bindings bind} various {goto names} to {goto lambdas lambdas.}
+  The names may be bound in any order, and the lambdas may call each other
+  freely.
+  For example, the following program implements a symbolic equation solver for
+  middle school algebra.
+  It can solve for any variable that appears exactly once in an equation.
+  The equation may use the 2-ary operators `{t +}', `{t –}', `{t ×}', and
+  `{t /}'.}
+
+{narrow
+ {left
+  {t ;\ }
+  Solve the equation {t leftSide} = {t rightSide} for {t variable.}}
+ {t{display
+(define solve
+ (λ (variable leftSide rightSide)
+  (if
+   (isInside variable leftSide)
+   (solving variable leftSide rightSide)
+   (solving variable rightSide leftSide))) )}}
+ {left
+  {t ;\ }
+  Solve when {t variable} appears in {t leftSide.}}
+ {t{display
+(define solving
+ (λ (variable leftSide rightSide)
+  (if
+   (objEq variable leftSide)
+   (list `= leftSide rightSide)
+   (if
+    (objEq (operator leftSide) `+)
+    (solvingAdd variable leftSide rightSide)
+    (if
+     (objEq (operator leftSide) `–)
+     (solvingSubtract variable leftSide rightSide)
+     (if
+      (objEq (operator leftSide) `×)
+      (solvingMultiply variable leftSide rightSide)
+      (if
+       (objEq (operator leftSide) `/)
+       (solvingDivide variable leftSide rightSide)
+       (throw "Unknown operator."))))))) )}}
+ {left
+  {t ;\ }
+  Solve when {t variable} is in {t leftSide,} whose outer operator is {t +.}}
+ {t{display
+(define solvingAdd
+ (λ (variable leftSide rightSide)
+  (if
+   (isInside variable (left leftSide))
+   (solving variable
+    (left leftSide)
+    (list `– rightSide (right leftSide)))
+   (solving variable
+    (right leftSide)
+    (list `– rightSide (left leftSide))))) )}}
+ {left
+  {t ;\ }
+  Solve when {t variable} is in {t leftSide,} whose outer operator is {t –.}}
+ {t{display
+(define solvingSubtract
+ (λ (variable leftSide rightSide)
+  (if
+   (isInside variable (left leftSide))
+   (solving variable
+    (left leftSide)
+    (list `+ (right leftSide) rightSide))
+   (solving variable
+    (right leftSide)
+    (list `– (left leftSide) rightSide)))) )}}
+ {left
+  {t ;\ }
+  Solve when {t variable} is in {t leftSide,} whose outer operator is {t ×.}}
+ {t{display
+(define solvingMultiply
+ (λ (variable leftSide rightSide)
+  (if
+   (isInside variable (left leftSide))
+   (solving variable
+    (left leftSide)
+    (list `/ rightSide (right leftSide)))
+   (solving variable
+    (right leftSide)
+    (list `/ rightSide (left leftSide))))) )}}
+ {left
+  {t ;\ }
+  Solve when {t variable} is in {t leftSide,} whose outer operator is {t /.}}
+ {t{display
+(define solvingDivide
+ (λ (variable leftSide rightSide)
+  (if
+   (isInside variable (left leftSide))
+   (solving variable
+    (left leftSide)
+    (list `× (right leftSide) rightSide))
+   (solving variable
+    (right leftSide)
+    (list `/ (left leftSide) rightSide)))) )}}
+ {left
+  {t ;\ }
+  Test if {t variable} appears inside {t expression.}}
+ {t{display
+(define isInside
+ (λ (variable expression)
+  (if
+   (isName expression)
+   (objEq variable expression)
+   (if
+    (isCons expression)
+    (or
+     (isInside variable (left expression))
+     (isInside variable (right expression)))
+    false))) )}}
+ {left
+  {t ;\ }
+  Return the outer operator of an expression.}
+ {t{display
+(define operator car)}}
+ {left
+  {t ;\ }
+  Return the left argument of an expression.}
+ {t{display
+(define left cadr)}}
+ {left
+  {t ;\ }
+  Return the right argument of an expression.}
+ {t{display
+(define right caddr)}}}
+
+{rule}
+
+{label running}
+{left {b 6. Running Scam.}}
+
+{justify
+  When you invoke Scam from the shell, it responds with the prompt `{t Q:}'.
+  If you type a Scam expression at the prompt, then it will be evaluated, and
+  the {goto objects object} it returns will be written to standard output,
+  prefixed by `{t A:}'.
+  Note that Scam has no way to correct errors in multi-line inputs.
+  If you make a typing mistake that can't be fixed by backspacing, then all you
+  can do is press control-C, which will throw away what you've typed, and get
+  you another `{t Q:}' prompt.
+
+  You can run the equation solving {goto programs program} shown above by
+  applying {goto load {t load.}}
+  Its argument is the pathname of the file that contains the program.
+  The following shows how the program solves the equation
+  {i y}\ =\ {i mx}\ +\ {i b} for {i x.}
+  The solution is {i x}\ =\ ({i y}\ –\ {i b})\ /\ {i m.}}
+
+{narrow{t{display
+Q: (load "scam/equation.scam")
+
+A: "scam/equation.scam"
+
+Q: (solve `x `y `(+ (× m x) b))
+
+A: (= x (/ (– y b) m))
+
+Q: (quit)}}}
+
+{justify
+  Scam continues in this way, asking for expressions and evaluating them, until
+  you exit by typing control-D or applying {goto quit {t quit.}}}
+
+{rule}
+
+{label references}
+{center {b References}}
+
+{layout
+ {row
+  {left
+   {label gls1990}
+   {c [gls\ 1990]\ }}
+  {justify
+    Guy L. Steele Jr.
+    {i Common Lisp: The Language.}
+    Second Edition.
+    Digital Press.
+    Bedford, Massachusetts.
+    1990.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label gre2000}
+   {c [gre\ 2000]\ }}
+  {justify
+    Jonathon Green.
+    {i Cassell's Dictionary of Slang.}
+    Cassell and Company.
+    London, United Kingdom.
+    2000.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label knr1988}
+   {c [knr\ 1988]\ }}
+  {justify
+    Brian W. Kernighan, Dennis M. Ritchie.
+    {i The C Programming Language.}
+    Second edition.
+    Prentice Hall.
+    Upper Saddle River, New Jersey.
+    1988.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label moe2014}
+   {c [moe\ 2014]\ \ }}
+  {justify
+    James B. Moen.
+    ``Revised⁻¹ Report on the Algorithmic Language Orson.''
+    Unpublished technical report.
+    2014.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label spe2007}
+   {c [spe\ 2007]\ \ }}
+  {justify
+    Michael Sperber, R. Kent Dybvig, Matthew Flatt, Anton van Straaten,
+    editors.
+    ``Revised⁶ Report on the Algorithmic Language Scheme.''
+    September 26, 2007.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label uni2006}
+   {c [uni\ 2006]\ \ }}
+  {justify
+    The Unicode Consortium.
+    {i The Unicode Standard, Version 5.0.}
+    Fifth Edition.
+    Addison-Wesley Professional.
+    Reading, Massachusetts.
+    2006.}}}

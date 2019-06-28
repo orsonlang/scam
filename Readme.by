@@ -1,0 +1,173 @@
+{title Scam}
+
+{center
+ {b Scam}
+
+ James B. Moen
+ January 17, 2014}
+
+{narrow
+ {justify
+   The list of scams is as long as it is wide and new ones spring up every day
+   to meet consumer needs.}
+ {right
+   {goto mad1995 {c [mad 1995]}}}}
+
+{justify
+  This directory contains source files for {i Scam}, an interpreter for a toy
+  language that is similar to a subset of Scheme {goto spe2007 {c [spe 2007].}}
+  It is written in Orson {goto moe2014 {c [moe 2014],}} and is intended to run
+  under Unix-like systems, such as {c Gnu}/Linux.
+  Scam was written to test the Orson library's garbage collector, signal
+  handler, and Unicode character methods.
+  These files contain Orson source code for the Scam interpreter.
+  The allegedly interesting ones are marked with `✗'.}
+
+{narrow
+ {layout
+  {row
+   {left {goto {t char.os}}}
+   {left \ \ \ Operations on characters.}}
+  {row
+   {left {goto {t cons.os}}}
+   {left \ \ \ Operations on conses.}}
+  {row
+   {left {goto {t eof.os}}}
+   {left \ \ \ Operations on ends of files.}}
+  {row
+   {left {goto {t error.os}}}
+   {left \ \ \ Evaluation errors.}}
+  {row
+   {left {goto evaluate.os {t evaluate.os\ \ }}}
+   {left \ \ \ Evaluate terms. ✗}}
+  {row
+   {left {goto {t hook.os}}}
+   {left \ \ \ Operations on hooks.}}
+  {row
+   {left {goto {t install.os}}}
+   {left \ \ \ Bind various names to objects.}}
+  {row
+   {left {goto {t integer.os}}}
+   {left \ \ \ Operations on integers.}}
+  {row
+   {left {goto {t lambda.os}}}
+   {left \ \ \ Operations on lambdas.}}
+  {row
+   {left {goto {t layer.os}}}
+   {left \ \ \ Operations on lists of binder trees.}}
+  {row
+   {left {goto {t main.os}}}
+   {left \ \ \ Main program.}}
+  {row
+   {left {goto {t name.os}}}
+   {left \ \ \ Operations on names.}}
+  {row
+   {left {goto {t path.os}}}
+   {left \ \ \ Operations on pathnames.}}
+  {row
+   {left {goto {t read.os}}}
+   {left \ \ \ Read an object from a text file. ✗}}
+  {row
+   {left {goto {t scam.os}}}
+   {left \ \ \ An interpreter for a Scheme-like language.}}
+  {row
+   {left {goto {t text.os}}}
+   {left \ \ \ Operations on texts.}}
+  {row
+   {left {goto {t write.os}}}
+   {left \ \ \ Write an object to a text file.}}}}
+
+{justify
+  These files contain example Scam programs that can be loaded into the Scam
+  interpreter.}
+
+{narrow
+ {layout
+  {row
+   {left {goto {t equation.scam}}}
+   {left \ \ \ Solve equations by simple algebra.}}
+  {row
+   {left {goto {t pasta.scam}}}
+   {left \ \ \ Make random linked graphs to test the garbage collector.}}
+  {row
+   {left {goto {t sort.scam}}}
+   {left \ \ \ Sort a list according to an ordering predicate.}}
+  {row
+   {left {goto {t utility.scam}}}
+   {left \ \ \ Utility functions (boring).}}}}
+
+{justify
+  These files contain documentation and other supporting material.}
+
+{narrow
+ {layout
+  {row
+   {left {goto ./Makefile {t Makefile}}}
+   {left \ \ \ Compile, install, uninstall Scam.}}
+  {row
+   {left {goto {t Manual.by}}}
+   {left \ \ \ Bracy source for {t Manual.html}.}}
+  {row
+   {left {goto Manual.html {t Manual.html\ \ }}}
+   {left \ \ \ The Scam manual.}}
+  {row
+   {left {goto ./README {t README}}}
+   {left \ \ \ Short text version of {t Readme.html}.}}
+  {row
+   {left {goto {t Readme.by}}}
+   {left \ \ \ Bracy source for {t Readme.html}.}}
+  {row
+   {left {goto {t Readme.html}}}
+   {left \ \ \ What you're reading now.}}
+  {row
+   {left {goto {t scam.1}}}
+   {left \ \ \ Manual page for Scam.}}}}
+
+{justify
+  Scam is available for free, under the terms of the {c Gnu} General Public
+  License ({c gpl}) version 3.
+  An Orson compiler is also available from the author, under the same terms.}
+
+{rule}
+
+{center {b References}}
+
+{layout
+ {row
+  {left
+   {label mad1995}
+   {c [mad\ 1995]\ \ }}
+  {justify
+    Carol Orsag Madigan, Ann Elwood.
+    {i Life's Big Instruction Book: The Almanac of Indispensible Information.}
+    Warner Books, Inc.
+    New York, New York.
+    1995.
+    Page 369.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label moe2014}
+   {c [moe\ 2014]\ \ }}
+  {justify
+    James B. Moen.
+    ``Revised⁻¹ Report on the Algorithmic Language Orson.''
+    Unpublished technical report.
+    2014.}}
+
+ {row
+  {left \ }
+  {left \ }}
+
+ {row
+  {left
+   {label spe2007}
+   {c [spe\ 2007]\ \ }}
+  {justify
+    Michael Sperber, R. Kent Dybvig, Matthew Flatt, Anton van Straaten.
+    ``Revised⁶ Report on the Algorithmic Language Scheme.''
+    2007.}}}

@@ -1,0 +1,74 @@
+;
+;  SCAM/UTILITY. Utility functions.
+;
+;  Copyright © 2011 James B. Moen.
+;
+;  This  program is free  software: you  can redistribute  it and/or  modify it
+;  under the terms  of the GNU General Public License as  published by the Free
+;  Software Foundation,  either version 3 of  the License, or  (at your option)
+;  any later version.
+;
+;  This program is distributed in the  hope that it will be useful, but WITHOUT
+;  ANY  WARRANTY;  without even  the  implied  warranty  of MERCHANTABILITY  or
+;  FITNESS FOR  A PARTICULAR PURPOSE.  See  the GNU General  Public License for
+;  more details.
+;
+;  You should have received a copy of the GNU General Public License along with
+;  this program.  If not, see <http://www.gnu.org/licenses/>.
+;
+
+;  APPEND. Return a new list consisting of LEFT's elements, followed by RIGHT's
+;  elements, in their original order.
+
+(define append
+ (λ (left right)
+  (if
+   (isNil right)
+   left
+   (:appending left right))) )
+
+;  :APPENDING. Do most of the work for APPEND.
+
+(define :appending
+ (λ (left right)
+  (if
+   (isNil left)
+   right
+   (cons
+    (car left)
+    (:appending (cdr left) right)))) )
+
+;  ELEMENT. Return the INDEXth element of the list OBJECTS.
+
+(define element
+ (λ (objects index)
+  (if
+   (intEq index 0)
+   (car objects)
+   (element
+    (cdr objects)
+    (intSub index 1)))) )
+
+;  FOR ALL ELEMENTS. Call the 1-ary FUNCTION on each element of OBJECTS.
+
+(define forAllElements
+ (λ (function objects)
+  (or
+   (isNil objects)
+   (last
+    (function (car objects))
+    (forAllElements function (cdr objects))))) )
+
+;  REMOVE FIRST. Remove the first appearance of ELEMENT in OBJECTS.
+
+(define removeFirst
+ (λ (objects element)
+  (if
+   (isNil objects)
+   nil
+   (if
+    (objEq (car objects) element)
+    (cdr objects)
+    (cons
+     (car objects)
+     (removeFirst (cdr objects) element))))) )

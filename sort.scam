@@ -1,0 +1,70 @@
+;
+;  SCAM/SORT. Sort a list according to an ordering predicate.
+;
+;  Copyright © 2015 James B. Moen.
+;
+;  This  program is free  software: you  can redistribute  it and/or  modify it
+;  under the terms  of the GNU General Public License as  published by the Free
+;  Software Foundation,  either version 3 of  the License, or  (at your option)
+;  any later version.
+;
+;  This program is distributed in the  hope that it will be useful, but WITHOUT
+;  ANY  WARRANTY;  without even  the  implied  warranty  of MERCHANTABILITY  or
+;  FITNESS FOR  A PARTICULAR PURPOSE.  See  the GNU General  Public License for
+;  more details.
+;
+;  You should have received a copy of the GNU General Public License along with
+;  this program.  If not, see <http://www.gnu.org/licenses/>.
+;
+
+;  SORT. Return a copy of REST, with its elements sorted in nondecreasing order
+;  according to the 2-ary predicate ≺. We use a recursive merge sort on REST.
+
+(define sort
+ (λ (≺ rest)
+  (if
+   (or
+    (isNil rest)
+    (isNil (cdr rest)))
+   rest
+   (:split ≺ rest nil nil))) )
+
+;  :SPLIT. Divide the list REST into two lists LEFT and RIGHT. Sort them by the
+;  ordering predicate ≺. Merge the sorted lists together and return the result.
+
+(define :split
+ (λ (≺ rest left right)
+  (if
+   (isNil rest)
+   (:merge ≺
+    (sort ≺ left)
+    (sort ≺ right))
+   (if
+    (isNil (cdr rest))
+    (:merge ≺
+     (sort ≺ (cons (car rest) left))
+     (sort ≺ right))
+    (:split ≺
+     (cddr rest)
+     (cons (car rest) left)
+     (cons (cadr rest) right))))) )
+
+;  :MERGE. Here LEFT and RIGHT are lists sorted according to ≺. Merge the lists
+;  together into one list, still sorted by ≺, and return the result.
+
+(define :merge
+ (λ (≺ left right)
+  (if
+   (isNil left)
+   right
+   (if
+    (isNil right)
+    left
+    (if
+     (≺ (car left) (car right))
+     (cons
+      (car left)
+      (:merge ≺ (cdr left) right))
+     (cons
+      (car right)
+      (:merge ≺ left (cdr right))))))) )

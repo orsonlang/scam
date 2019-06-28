@@ -1,0 +1,561 @@
+<!-- Created by Bracy 0.4 on Monday, January 1, 2018 at 7:42 PM CST -->
+<html>
+ <head>
+  <title>
+   Scam
+  </title>
+  <style>
+   a:active
+    { color: purple;
+      font-weight: bold;
+      text-decoration: none }
+   a:link
+    { color: blue;
+      font-weight: bold;
+      text-decoration: none }
+   a:visited
+    { color: purple;
+      font-weight: bold;
+      text-decoration: none }
+   hr
+    { background-color: black;
+      border: none;
+      color: black;
+      height: 1px }
+   table
+    { border-collapse: collapse }
+  </style>
+ </head>
+ <body bgcolor="#FFFFFF">
+  <p align="center">
+   <b>Scam</b>
+   <br />
+   <br />
+   James B. Moen
+   <br />
+   January 17, 2014
+  </p>
+  <blockquote>
+   <p align="justify">
+    The list of scams is as long as it is wide and new ones spring up every day
+    to meet consumer needs.
+   </p>
+   <p align="right">
+    <a href="#mad1995">
+     [<small>MAD</small> 1995]
+    </a>
+   </p>
+  </blockquote>
+  <p align="justify">
+   This directory contains source files for <i>Scam</i>, an interpreter
+   for a toy language that is similar to a subset of Scheme
+   <a href="#spe2007">
+    [<small>SPE</small> 2007].
+   </a>
+   It is written in Orson
+   <a href="#moe2014">
+    [<small>MOE</small> 2014],
+   </a>
+   and is intended to run under Unix-like systems, such as
+   G<small>NU</small>/Linux. Scam was written to test the Orson
+   library&rsquo;s garbage collector, signal handler, and Unicode character
+   methods. These files contain Orson source code for the Scam interpreter. The
+   allegedly interesting ones are marked with &lsquo;&#10007;&rsquo;.
+  </p>
+  <blockquote>
+   <table cellpadding="0" cellspacing="0">
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="char.os">
+        <tt>char.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on characters.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="cons.os">
+        <tt>cons.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on conses.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="eof.os">
+        <tt>eof.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on ends of files.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="error.os">
+        <tt>error.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Evaluation errors.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="evaluate.os">
+        <tt>evaluate.os&nbsp;&nbsp;</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Evaluate terms. &#10007;
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="hook.os">
+        <tt>hook.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on hooks.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="install.os">
+        <tt>install.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Bind various names to objects.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="integer.os">
+        <tt>integer.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on integers.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="lambda.os">
+        <tt>lambda.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on lambdas.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="layer.os">
+        <tt>layer.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on lists of binder trees.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="main.os">
+        <tt>main.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Main program.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="name.os">
+        <tt>name.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on names.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="path.os">
+        <tt>path.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on pathnames.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="read.os">
+        <tt>read.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Read an object from a text file. &#10007;
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="scam.os">
+        <tt>scam.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;An interpreter for a Scheme-like language.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="text.os">
+        <tt>text.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Operations on texts.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="write.os">
+        <tt>write.os</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Write an object to a text file.
+      </p>
+     </td>
+    </tr>
+   </table>
+  </blockquote>
+  <p align="justify">
+   These files contain example Scam programs that can be loaded into the Scam
+   interpreter.
+  </p>
+  <blockquote>
+   <table cellpadding="0" cellspacing="0">
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="equation.scam">
+        <tt>equation.scam</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Solve equations by simple algebra.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="pasta.scam">
+        <tt>pasta.scam</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Make random linked graphs to test the garbage
+       collector.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="sort.scam">
+        <tt>sort.scam</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Sort a list according to an ordering predicate.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="utility.scam">
+        <tt>utility.scam</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Utility functions (boring).
+      </p>
+     </td>
+    </tr>
+   </table>
+  </blockquote>
+  <p align="justify">
+   These files contain documentation and other supporting material.
+  </p>
+  <blockquote>
+   <table cellpadding="0" cellspacing="0">
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="./Makefile">
+        <tt>Makefile</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Compile, install, uninstall Scam.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="Manual.by">
+        <tt>Manual.by</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Bracy source for <tt>Manual.html</tt>.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="Manual.html">
+        <tt>Manual.html&nbsp;&nbsp;</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;The Scam manual.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="./README">
+        <tt>README</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Short text version of <tt>Readme.html</tt>.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="Readme.by">
+        <tt>Readme.by</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Bracy source for <tt>Readme.html</tt>.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="Readme.html">
+        <tt>Readme.html</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;What you&rsquo;re reading now.
+      </p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td>
+      <p>
+       <a href="scam.1">
+        <tt>scam.1</tt>
+       </a>
+      </p>
+     </td>
+     <td>
+      <p>
+       &nbsp;&nbsp;&nbsp;Manual page for Scam.
+      </p>
+     </td>
+    </tr>
+   </table>
+  </blockquote>
+  <p align="justify">
+   Scam is available for free, under the terms of the G<small>NU</small>
+   General Public License (<small>GPL</small>) version 3. An Orson
+   compiler is also available from the author, under the same terms.
+  </p>
+  <hr />
+  <p align="center">
+   <b>References</b>
+  </p>
+  <table cellpadding="0" cellspacing="0">
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="mad1995">
+      </a>
+      [<small>MAD</small>&nbsp;1995]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Carol Orsag Madigan, Ann Elwood. <i>Life&rsquo;s Big Instruction Book:
+      The Almanac of Indispensible Information.</i> Warner Books, Inc. New
+      York, New York. 1995. Page 369.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="moe2014">
+      </a>
+      [<small>MOE</small>&nbsp;2014]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      James B. Moen. &lsquo;&lsquo;Revised&#8315;&#185; Report on the
+      Algorithmic Language Orson.&rsquo;&rsquo; Unpublished technical report.
+      2014.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="spe2007">
+      </a>
+      [<small>SPE</small>&nbsp;2007]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Michael Sperber, R. Kent Dybvig, Matthew Flatt, Anton van Straaten.
+      &lsquo;&lsquo;Revised&#8310; Report on the Algorithmic Language
+      Scheme.&rsquo;&rsquo; 2007.
+     </p>
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>

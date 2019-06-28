@@ -1,0 +1,51 @@
+                                     SCAM
+
+                                 James B. Moen
+                               January 17, 2014
+
+This  directory  contains source  files  for Scam,  an  interpreter  for a  toy
+language that is similar to a subset  of Scheme. It is written in Orson, and is
+intended to run under Unix-like systems, such as GNU/Linux. Scam was written to
+test  the  Orson  library’s  garbage  collector, signal  handler,  and  Unicode
+character  methods.  These  files  contain  Orson  source  code  for  the  Scam
+interpreter. The allegedly interesting ones are marked with ‘✗’.
+
+    char.os        Operations on characters.
+    cons.os        Operations on conses.
+    eof.os         Operations on ends of files.
+    error.os       Evaluation errors.
+    evaluate.os    Evaluate terms. ✗
+    hook.os        Operations on hooks.
+    install.os     Bind various names to objects.
+    integer.os     Operations on integers.
+    lambda.os      Operations on lambdas.
+    layer.os       Operations on lists of binder trees.
+    main.os        Main program.
+    name.os        Operations on names.
+    path.os        Operations on pathnames.
+    read.os        Read an object from a text file. ✗
+    scam.os        An interpreter for a Scheme-like language.
+    text.os        Operations on texts.
+    write.os       Write an object to a text file.
+
+These files  contain example  Scam programs  that can be  loaded into  the Scam
+interpreter.
+
+    equation.scam  Solve equations by simple algebra.
+    pasta.scam     Make random linked graphs to test the garbage collector.
+    sort.scam      Sort a list according to an ordering predicate.
+    utility.scam   Utility functions (boring).
+
+These files contain documentation and other supporting material.
+
+    Makefile       Compile, install, uninstall Scam.
+    Manual.by      Bracy source for the Scam manual.
+    Manual.html    The Scam manual.
+    README         What you're reading now.
+    Readme.by      Bracy source for Readme.html.
+    Readme.html    Long HTML version of README.
+    scam.1         Manual page for Scam.
+
+Scam is available  for free, under the terms of the  GNU General Public License
+(GPL) version 3. An Orson compiler is also available from the author, under the
+same terms.

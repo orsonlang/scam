@@ -1,0 +1,130 @@
+.TH SCAM 1 "July 26, 2018"
+.DD July 26, 2018
+
+.SH NAME
+scam - Scam interpreter
+
+.SH SYNOPSIS
+.B scam\c
+ [\c
+.B -bv\c
+] [\c
+.I file\c
+\&...]
+
+.SH DESCRIPTION
+.B Scam
+is an interpreter for a toy functional programming language that resembles a
+subset of Scheme.
+.B Scam
+programs are written in a parenthesized prefix notation.
+They can perform computations with lists, names (like Scheme's symbols),
+numbers (32-bit two's complement integers), and strings.
+Variables are lexically scoped, and function applications are properly tail
+recursive.
+
+.PP
+.B Scam
+was written primarily as a test of the garbage collector, signal handler, and
+Unicode character I/O of the programming language
+.B Orson.
+However, the author has also used
+.B scam
+as a scripting language for making complex text files, like the HTML files that
+are used in web pages.
+
+.PP
+.B
+Scam
+reads and writes 31-bit characters, encoded in UTF-8.
+A Scam file may contain any characters that are not control characters,
+except that any line may be terminated by a linefeed (U+000A), by a return
+(U+000D), by a linefeed and a return, or by a return and a linefeed.
+Tabs (U+0009) are not allowed.
+You can write Scam programs in the familiar 7-bit ASCII or the Unicode
+character sets.
+
+.PP
+By default,
+.B scam
+evaluates zero or more files named on the command line.
+Each file must have the suffix
+.B .scam\c
+\&.
+After all files have been evaluated,
+.B scam
+enters an interactive interpreter.
+The interpreter prompts for an expression with "Q:".
+When the user enters an expression on stdin,
+.B scam
+evaluates it and writes the result to stdout, prefixed by "A:".
+The interpreter continues in this way, reading expressions and evaluating them,
+until the user calls the function
+.B quit
+or types control-D.
+Control-C interrupts evaluation and passes control to the interactive
+interpreter.
+
+.PP
+.B Scam
+recognizes the following options.
+If an option doesn't appear on the command line, then the option's default
+takes effect.
+
+.TP
+.B -b
+Batch.
+Don't enter the interactive interpreter after files named on the command line
+have been evaluated.
+The default is to enter the interpreter.
+
+.TP
+.B -v
+Version.
+Print
+.B scam\c
+\&'s version number and other identifying information on stdout.
+The default is to print no version information.
+
+.SH COPYING
+Copyright (C) 2018 James B. Moen.
+Permission is granted to copy, distribute, and/or modify this document under
+the terms of the GNU Free Documentation License, Version 1.3 or any later
+version published by the Free Software Foundation; with no Invariant
+Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license may be obtained at <http://fsf.org/>.
+
+.SH VERSION
+Version 0.5.
+
+.SH REFERENCES
+James B. Moen.
+"The Scam Manual."
+Unpublished technical report.
+2016.
+
+James B. Moen.
+"Unrevised Report on the Algorithmic Language Orson."
+Unpublished Technical Report.
+2018.
+
+Michael Sperber,
+R. Kent Dybvig,
+Matthew Flatt,
+Anton van Stratten
+(editors).
+"Revised⁶ Report on the Algorithmic Language Scheme."
+September 26, 2007.
+
+.SH AUTHOR
+James B. Moen
+
+.SH SEE ALSO
+.B ascii\c
+(7),
+.B orson\c
+(1),
+.B unicode\c
+(7),
+.B utf-8\c
+(7).

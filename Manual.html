@@ -1,0 +1,3849 @@
+<!-- Created by Bracy 0.4 on Monday, January 1, 2018 at 7:42 PM CST -->
+<html>
+ <head>
+  <title>
+   The Scam Manual
+  </title>
+  <style>
+   a:active
+    { color: purple;
+      font-weight: bold;
+      text-decoration: none }
+   a:link
+    { color: blue;
+      font-weight: bold;
+      text-decoration: none }
+   a:visited
+    { color: purple;
+      font-weight: bold;
+      text-decoration: none }
+   hr
+    { background-color: black;
+      border: none;
+      color: black;
+      height: 1px }
+   table
+    { border-collapse: collapse }
+  </style>
+ </head>
+ <body bgcolor="#FFFFFF">
+  <p align="center">
+   <b>The Scam Manual</b>
+   <br />
+   <br />
+   James B. Moen
+   <br />
+   September 12, 2016
+  </p>
+  <p align="justify">
+   Copyright &#169; 2015 James B. Moen. Permission is granted to copy,
+   distribute, and/or modify this document under the terms of the
+   G<small>NU</small> Free Documentation License, Version 1.3 or any later
+   version published by the Free Software Foundation; with no Invariant
+   Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the
+   license may be obtained at
+   <a href="http://fsf.org/">
+    <tt>&lt;http://fsf.org/&gt;.</tt>
+   </a>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This manual uses special characters. Without
+   proper rendering support, you may see question marks, boxes, or other
+   symbols in place of these characters.
+  </p>
+  <hr />
+  <p align="center">
+   <b>Contents</b>
+  </p>
+  <table cellpadding="0" cellspacing="0">
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#introduction">
+       1.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Introduction.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#characters">
+       2.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Characters.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#objects">
+       3.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Objects.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#conses">
+          3.1.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Conses.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#eofs">
+          3.2.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Eofs.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#hooks">
+          3.3.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Hooks.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#integers">
+          3.4.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Integers.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#lambdas">
+          3.5.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Lambdas.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#lists">
+          3.6.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Lists.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#names">
+          3.7.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Names.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <table cellpadding="0" cellspacing="0">
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#private">
+             3.7.1.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            Private names.
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#bindings">
+             3.7.2.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            Bindings.
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#boolean">
+             3.7.3.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            Booleans.
+           </p>
+          </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#strings">
+          3.8.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Strings.
+        </p>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#procedures">
+       4.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Procedures.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <table cellpadding="0" cellspacing="0">
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#errors">
+          4.1.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Errors.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#tests">
+          4.2.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Tests.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         <a href="#primitives">
+          4.3.
+         </a>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <p>
+         Primitives.
+        </p>
+       </td>
+      </tr>
+      <tr valign="top">
+       <td>
+        <p>
+         &nbsp;
+        </p>
+       </td>
+       <td>
+        <table cellpadding="0" cellspacing="0">
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#and">
+             4.3.1.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>and</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#intNeg">
+             4.3.25.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intNeg</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#objWrite">
+             4.3.49.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>objWrite</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#car">
+             4.3.2.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>car</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#intNot">
+             4.3.26.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intNot</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#or">
+             4.3.50.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>or</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#caxr">
+             4.3.3.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>ca</tt><i>x</i><tt>r</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#intOr">
+             4.3.27.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intOr</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#quit">
+             4.3.51.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>quit</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#catch">
+             4.3.4.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>catch</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#intSub">
+             4.3.28.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intSub</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#quote">
+             4.3.52.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>quote</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#cdr">
+             4.3.5.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>cdr</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#intXor">
+             4.3.29.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intXor</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#set">
+             4.3.53.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>set</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#cdxr">
+             4.3.6.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>cd</tt><i>x</i><tt>r</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isCons">
+             4.3.30.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isCons</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#setCar">
+             4.3.54.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>setCar</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#cons">
+             4.3.7.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>cons</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isHook">
+             4.3.31.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isHook</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#setCdr">
+             4.3.55.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>setCdr</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#cr">
+             4.3.8.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>cr</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isEof">
+             4.3.32.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isEof</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strAdd">
+             4.3.56.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strAdd</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#define">
+             4.3.9.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>define</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isInt">
+             4.3.33.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isInt</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strDate">
+             4.3.57.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strDate</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#first">
+             4.3.10.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>first</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isLambda">
+             4.3.34.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isLambda</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strEq">
+             4.3.58.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strEq</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#if">
+             4.3.11.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>if</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isName">
+             4.3.35.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isName</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strGe">
+             4.3.59.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strGe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#imply">
+             4.3.12.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>imply</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isNil">
+             4.3.36.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isNil</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strGt">
+             4.3.60.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strGt</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#include">
+             4.3.13.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>include</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isString">
+             4.3.37.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>isString</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strLe">
+             4.3.61.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strLe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intAdd">
+             4.3.14.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intAdd</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#isGreekLambda">
+             4.3.38.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>is&#955;</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strLen">
+             4.3.62.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strLen</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intAnd">
+             4.3.15.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intAnd</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#lambda">
+             4.3.39.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>lambda</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strLow">
+             4.3.63.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strLow</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intDiv">
+             4.3.16.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intDiv</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#last">
+             4.3.40.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>last</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strLt">
+             4.3.64.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strLt</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intEq">
+             4.3.17.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intEq</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#let">
+             4.3.41.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>let</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strName">
+             4.3.65.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strName</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intGe">
+             4.3.18.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intGe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#list">
+             4.3.42.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>list</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strNe">
+             4.3.66.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strNe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intGt">
+             4.3.19.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intGt</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#load">
+             4.3.43.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>load</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strRead">
+             4.3.67.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strRead</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intLe">
+             4.3.20.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intLe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#nameStr">
+             4.3.44.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>nameStr</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strSub">
+             4.3.68.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strSub</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intLt">
+             4.3.21.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intLt</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#not">
+             4.3.45.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>not</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strUp">
+             4.3.69.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strUp</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intMod">
+             4.3.22.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intMod</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#objEq">
+             4.3.46.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>objEq</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#strWrite">
+             4.3.70.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>strWrite</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intMul">
+             4.3.23.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intMul</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#objLen">
+             4.3.47.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>objLen</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#throw">
+             4.3.71.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>throw</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+         <tr valign="top">
+          <td>
+           <p>
+            <a href="#intNe">
+             4.3.24.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>intNe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#objNe">
+             4.3.48.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>objNe</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <a href="#greekLambda">
+             4.3.72.
+            </a>
+            &nbsp;
+           </p>
+          </td>
+          <td>
+           <p>
+            <tt>&#955;</tt>. &nbsp;&nbsp;
+           </p>
+          </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#programs">
+       5.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Programs.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#running">
+       6.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      Running Scam.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a href="#references">
+       7.
+      </a>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      References.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+  </table>
+  <hr />
+  <a name="introduction">
+  </a>
+  <p>
+   <b>1. Introduction.</b>
+  </p>
+  <blockquote>
+   <p align="justify">
+    <b>scam</b> <i>n.</i> <b>1</b> [1960s+] a plan, a scheme.
+    <b>2</b> a large-scale plan to smuggle and distribute illegal drugs.
+    <b>3</b> (US) information (cf.
+    <small>LOW</small>-<small>DOWN</small>).
+   </p>
+   <p align="right">
+    <a href="#gre2000">
+     [<small>GRE</small> 2000]
+    </a>
+   </p>
+  </blockquote>
+  <p align="justify">
+   <i>Scam</i> is an interpreter for a toy functional programming language
+   that resembles a subset of Scheme
+   <a href="#spe2007">
+    [<small>SPE</small>&nbsp;2007].
+   </a>
+   Scam programs are written in a parenthesized prefix notation. They can
+   perform computations with lists, names (like Scheme&rsquo;s symbols),
+   numbers (32-bit two&rsquo;s complement integers) and Unicode strings.
+   Variables are lexically scoped, and procedures are properly tail recursive.
+   Scam runs under Unix-like systems, such as G<small>NU</small>/Linux.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scam was written in the experimental
+   programming language <i>Orson</i>
+   <a href="#moe2014">
+    [<small>MOE</small>&nbsp;2014]
+   </a>
+   as a test of the Orson compiler and parts of the Orson library. Since Scam
+   is only a test, it omits many features that would be present in a complete
+   programming language. However, it has been used by the author to implement a
+   few simple applications, such as a program that formats parts of web pages.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This manual gives a brief overview of Scam.
+   It is not a tutorial. The reader is expected to be familiar with Scheme, or
+   with another dialect of Lisp, such as Common Lisp
+   <a href="#gls1990">
+    [<small>GLS</small>&nbsp;1990].
+   </a>
+  </p>
+  <hr />
+  <a name="characters">
+  </a>
+  <p>
+   <b>2. Characters.</b>
+  </p>
+  <p align="justify">
+   Scam reads and writes text using a 31-bit character set with the
+   <small>UTF</small>-8 encoding. This includes the familiar 7-bit
+   <small>ASCII</small> character set and the 21-bit Unicode character set
+   <a href="#uni2006">
+    [<small>UNI</small>&nbsp;2006]
+   </a>
+   as subsets. It is possible to use Scam with <small>ASCII</small>
+   characters on systems that do not support Unicode.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Certain characters are used by Scam as
+   delimiters and punctuation. They can be used as ordinary characters by
+   prefixing them with backslashes. For example, a double quote can be used as
+   an ordinary character by writing &lsquo;<tt>\"</tt>&rsquo;. A backslash
+   itself can be used as an ordinary character by writing
+   &lsquo;<tt>\\</tt>&rsquo;.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Several common invisible characters may
+   appear as letters prefixed by backslashes, as in the programming language C
+   <a href="#knr1988">
+    [<small>KNR</small> 1988].
+   </a>
+   Backslashed letters and the characters they represent are shown in the
+   following table.
+  </p>
+  <table align="center" border="1" cellpadding="3" cellspacing="0">
+   <tr bgcolor="#D3D3D3" valign="top">
+    <td>
+     <p align="center">
+      <b>&nbsp;<small>LETTER</small>&nbsp;</b>
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <b>&nbsp;<small>CHARACTER</small>&nbsp;</b>
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <b>&nbsp;<small>LETTER</small>&nbsp;</b>
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <b>&nbsp;<small>CHARACTER</small>&nbsp;</b>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <tt>\A</tt> or <tt>\a</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Alert (U+0007)
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <tt>\N</tt> or <tt>\n</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Line feed (U+000A)
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <tt>\B</tt> or <tt>\b</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Backspace (U+0008)
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <tt>\R</tt> or <tt>\r</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Return (U+000D)
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <tt>\E</tt> or <tt>\e</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Escape (U+001B)
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <tt>\T</tt> or <tt>\t</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Horizontal tab (U+0009)
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <tt>\F</tt> or <tt>\f</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Formfeed (U+000C)
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      <tt>\V</tt> or <tt>\v</tt>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Vertical tab (U+000B)
+     </p>
+    </td>
+   </tr>
+  </table>
+  <p align="justify">
+   Any character may be written as &lsquo;<tt>\#</tt>&rsquo; followed by a
+   series of one or more digits &lsquo;<tt>0</tt>&rsquo; through
+   &lsquo;<tt>9</tt>&rsquo; and Roman letters
+   &lsquo;<tt>A</tt>&rsquo; through &lsquo;<tt>F</tt>&rsquo;,
+   &lsquo;<tt>a</tt>&rsquo; through &lsquo;<tt>f</tt>&rsquo;. The
+   digits and letters denote the code for the character in hexadecimal, with
+   digits having the values 0 through 9, and letters having the values 10
+   through 15. Codes range from 0 to 7FFFFFFF. For example, the
+   <a href="#strings">
+    string
+   </a>
+   <tt>"&#955;-calculus"</tt> may also be written as
+   <tt>"\#03BB-calculus"</tt>, because the code for the character
+   &lsquo;<tt>&#955;</tt>&rsquo; is 03BB.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any numeric character code may be optionally
+   followed by &lsquo;\_&rsquo;, which is ignored. This is sometimes necessary
+   to separate a character code from the rest of a
+   <a href="#names">
+    name
+   </a>
+   or a string. For example, the string <tt>"\#03BB"</tt> has one
+   character &lsquo;<tt>&#955;</tt>&rsquo;, but the string
+   <tt>"\#03\_BB"</tt> has three: the first has the code 03, the second is
+   &lsquo;<tt>B</tt>&rsquo;, and the third is also
+   &lsquo;<tt>B</tt>&rsquo;.
+  </p>
+  <hr />
+  <a name="objects">
+  </a>
+  <p>
+   <b>3. Objects.</b>
+  </p>
+  <p align="justify">
+   Scam supports seven kinds of objects, called
+   <a href="#conses">
+    <i>conses,</i>
+   </a>
+   <a href="#eofs">
+    <i>eofs,</i>
+   </a>
+   <a href="#hooks">
+    <i>hooks,</i>
+   </a>
+   <a href="#integers">
+    <i>integers,</i>
+   </a>
+   <a href="#lambdas">
+    <i>lambdas,</i>
+   </a>
+   <a href="#names">
+    <i>names,</i>
+   </a>
+   and
+   <a href="#strings">
+    <i>strings.</i>
+   </a>
+   An eighth kind, called
+   <a href="#lists">
+    <i>lists,</i>
+   </a>
+   are constructed from conses. All objects can be the
+   <a href="#bindings">
+    bindings
+   </a>
+   of names, can be passed as arguments to
+   <a href="#procedures">
+    procedures,
+   </a>
+   and can be written to text files. All objects except circular lists, eofs,
+   hooks, and lambdas can be read from text files.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Whitespace (blanks and newlines) is ignored
+   in the written representations of objects, except where it is required as a
+   separator. Comments are treated as whitespace: each comment begins with a
+   semicolon &lsquo;<tt>;</tt>&rsquo; and ends with a newline. Control
+   characters (such as tabs) are also treated as whitespace, except for a few
+   that the operating system uses as signals.
+  </p>
+  <a name="conses">
+  </a>
+  <p>
+   <b>3.1. Conses.</b>
+  </p>
+  <p align="justify">
+   A <i>cons</i> is a pair of
+   <a href="#objects">
+    objects,
+   </a>
+   called (for historical reasons) the <i>car</i> and the <i>cdr.</i>
+   It is written as
+   <tt>(</tt><i>a</i>&nbsp;<b>.</b>&nbsp;<i>d</i><tt>),</tt>
+   where <i>a</i> is the written representation of the car, and
+   <i>d</i> is the written representation of the cdr.
+  </p>
+  <a name="eofs">
+  </a>
+  <p>
+   <b>3.2. Eofs.</b>
+  </p>
+  <p align="justify">
+   An <i>eof</i> denotes the end of a text file. A procedure that reads
+   <a href="#objects">
+    objects
+   </a>
+   from a text file will return an eof when there are no objects left to be
+   read. Scam writes an eof as <tt>[eof],</tt> but this notation will
+   cause an
+   <a href="#errors">
+    error
+   </a>
+   if it is read back in again.
+  </p>
+  <a name="hooks">
+  </a>
+  <p>
+   <b>3.3. Hooks.</b>
+  </p>
+  <p align="justify">
+   A <i>hook</i> is a procedure provided by Scam. Scam writes a hook as
+   <tt>[</tt><i>h</i>&nbsp;<i>a</i><tt>],</tt> where
+   <i>h</i> is a series of letters that identify the hook, and
+   <i>a</i> is the hexadecimal memory address where the hook resides. This
+   notation will cause an
+   <a href="#errors">
+    error
+   </a>
+   if it is read back in again.
+  </p>
+  <a name="integers">
+  </a>
+  <p>
+   <b>3.4. Integers.</b>
+  </p>
+  <p align="justify">
+   An <i>integer</i> is a two&rsquo;s complement integer between
+   <tt>&#8211;2147483648</tt> and <tt>2147483647,</tt> inclusive. It
+   is written as a series of one or more decimal digits
+   &lsquo;<tt>0</tt>&rsquo; through &lsquo;<tt>9</tt>&rsquo;. The
+   first digit in the series may be optionally prefixed by a dash
+   &lsquo;<tt>&#8211;</tt>&rsquo;, indicating a negative number.
+  </p>
+  <a name="lambdas">
+  </a>
+  <p>
+   <b>3.5. Lambdas.</b>
+  </p>
+  <p align="justify">
+   A <i>lambda</i> is a procedure provided by a user program. Scam writes
+   a lambda as <tt>[closure</tt>&nbsp;<i>a</i><tt>],</tt> where
+   <i>a</i> is the hexadecimal memory address where the lambda resides.
+   This notation will cause an
+   <a href="#errors">
+    error
+   </a>
+   if it is read back in again.
+  </p>
+  <a name="lists">
+  </a>
+  <p>
+   <b>3.6. Lists.</b>
+  </p>
+  <p align="justify">
+   A <i>list</i> is an ordered series of zero or more
+   <a href="#objects">
+    objects,
+   </a>
+   called its <i>elements.</i> It is written like this, where the
+   subscripted <i>o</i>&rsquo;s are written representations of the
+   elements, separated by whitespace.
+  </p>
+  <p align="center">
+   <tt>(</tt><i>o</i><sub>1</sub> <i>o</i><sub>2</sub>
+   ... <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   The list is an abbreviation for a series of nested
+   <a href="#conses">
+    conses:
+   </a>
+  </p>
+  <p align="center">
+   <tt>(</tt><i>o</i><sub>1</sub> <b>.</b>
+   <tt>(</tt><i>o</i><sub>2</sub> ... <b>.</b>
+   <tt>(</tt><i>o<sub>n</sub></i> <b>.</b>
+   <tt>nil)</tt> ... <tt>))</tt>
+  </p>
+  <p align="justify">
+   Such a list, whose rightmost cdr is the
+   <a href="#names">
+    name
+   </a>
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   is called a <i>proper list.</i> An <i>improper list</i> is one
+   whose rightmost cdr is an object other than <tt>nil.</tt> A proper list
+   of zero elements may be written as <tt>(),</tt> and is equivalent to
+   <tt>nil.</tt>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Circular lists may be created by the
+   procedures
+   <a href="#setCar">
+    <tt>setCar</tt>
+   </a>
+   and
+   <a href="#setCdr">
+    <tt>setCdr.</tt>
+   </a>
+   When Scam writes a list, it will detect these circularities, and write each
+   one as <tt>[...].</tt> This notation for circularities will cause an
+   error if it is read back in again.
+  </p>
+  <a name="names">
+  </a>
+  <p>
+   <b>3.7. Names.</b>
+  </p>
+  <p align="justify">
+   A <i>name</i> is written as a series of one or more characters, other
+   than brackets &lsquo;<tt>[</tt>&rsquo; and
+   &lsquo;<tt>]</tt>&rsquo;, dots &lsquo;<b>.</b>&rsquo;, double
+   quotes &lsquo;<tt>"</tt>&rsquo;, parentheses, and whitespace. These and
+   other characters may appear in names by prefixing them with
+   <a href="#characters">
+    backslashes.
+   </a>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If two names are made up of the same
+   characters, in the same order, then they refer to the same
+   <a href="#objects">
+    object
+   </a>
+   in memory. Names may be therefore tested for equality by the procedure
+   <a href="#objEq">
+    <tt>objEq,</tt>
+   </a>
+   which compares the addresses of two objects. This does not necessarily work
+   for objects other than names.
+  </p>
+  <a name="private">
+  </a>
+  <p>
+   <b>3.7.1. Private names.</b>
+  </p>
+  <p align="justify">
+   If a
+   <a href="#names">
+    name
+   </a>
+   begins with a colon &lsquo;<tt>:</tt>&rsquo;, then Scam automatically
+   prefixes it by the name of the text file being read when the name is
+   created. For example, if Scam is reading the file
+   <tt>/home/jim/scam/sort.scam,</tt> then the name
+   <tt>:partition</tt> will be treated as if it was written
+   <tt>sort:partition.</tt> If a name that begins with a colon is read
+   from the standard input device, such as a keyboard, then the name is
+   unchanged. This convention allows each Scam file to have its own private
+   names that are distinct from the names in other files. Note that this is
+   <i>not</i> how colons work in Common Lisp
+   <a href="#gls1990">
+    [<small>GLS</small> 1990].
+   </a>
+  </p>
+  <a name="bindings">
+  </a>
+  <p>
+   <b>3.7.2. Bindings.</b>
+  </p>
+  <p align="justify">
+   Each
+   <a href="#names">
+    name
+   </a>
+   is optionally associated with an
+   <a href="#objects">
+    object,
+   </a>
+   called the name&rsquo;s <i>binding.</i> If a name has a binding, then
+   it is said to be <i>bound,</i> otherwise it is said to be
+   <i>unbound.</i>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The act of associating a name with an object
+   is called <i>binding</i> the name to the object. Most (but not all)
+   names are initially unbound when Scam begins running. A name may be bound to
+   many different objects as a Scam program runs, and may alternate between
+   being bound and unbound.
+  </p>
+  <a name="boolean">
+  </a>
+  <p>
+   <b>3.7.3. Booleans.</b>
+  </p>
+  <p align="justify">
+   The
+   <a href="#names">
+    name
+   </a>
+   <tt>nil</tt> is initially
+   <a href="#bindings">
+    bound
+   </a>
+   to itself. It represents both a proper
+   <a href="#lists">
+    list
+   </a>
+   of zero elements, and a Boolean <i>false</i> value. Any
+   <a href="#objects">
+    object
+   </a>
+   other than <tt>nil</tt> represents a Boolean <i>true</i> value.
+   The name <tt>true</tt> is also initially bound to itself. It is often
+   convenient to use <tt>true</tt> as a Boolean <i>true</i> value,
+   even though any object other than <tt>nil</tt> would suffice.
+  </p>
+  <a name="strings">
+  </a>
+  <p>
+   <b>3.8. Strings.</b>
+  </p>
+  <p align="justify">
+   A <i>string</i> starts with a double quote
+   &lsquo;<tt>"</tt>&rsquo;, is followed by zero or more characters other
+   than newlines and double quotes, and ends with another double quote. The
+   <i>empty string,</i> with zero characters, is written as two adjacent
+   double quotes, &lsquo;<tt>""</tt>&rsquo;. Double quotes themselves, and
+   any other characters, may appear in strings by prefixing them with
+   <a href="#characters">
+    backslashes.
+   </a>
+  </p>
+  <hr />
+  <a name="procedures">
+  </a>
+  <p>
+   <b>4. Procedures.</b>
+  </p>
+  <p align="justify">
+   A <i>procedure</i> is either a
+   <a href="#hooks">
+    hook
+   </a>
+   or a
+   <a href="#lambdas">
+    lambda.
+   </a>
+   It may be <i>applied</i> to zero or more
+   <a href="#objects">
+    objects,
+   </a>
+   called its <i>arguments.</i> An application of a procedure
+   <i>p</i> to its arguments, the subscripted <i>a</i>&rsquo;s, is
+   written as a proper
+   <a href="#lists">
+    list:
+   </a>
+  </p>
+  <p align="center">
+   <tt>(</tt><i>p a</i><sub>1</sub>
+   <i>a</i><sub>2</sub> ...
+   <i>a<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   The application either <i>returns</i> exactly one object, called its
+   <i>value,</i> or else returns no value at all. An application does not
+   return a value if it is in
+   <a href="#errors">
+    error,
+   </a>
+   or if it applies
+   <a href="#throw">
+    <tt>throw</tt>.
+   </a>
+  </p>
+  <a name="errors">
+  </a>
+  <p>
+   <b>4.1. Errors.</b>
+  </p>
+  <p align="justify">
+   Applying a
+   <a href="#procedures">
+    procedure
+   </a>
+   with the wrong types of arguments, with the wrong number of arguments, or
+   both, will cause an error. For most errors, Scam applies
+   <a href="#throw">
+    <tt>throw,</tt>
+   </a>
+   which terminates the most recently executing application of
+   <a href="#catch">
+    <tt>catch.</tt>
+   </a>
+   If no application of <tt>catch</tt> is executing when the error occurs,
+   then a message will be written to standard output, and control will pass
+   back to Scam.
+  </p>
+  <a name="tests">
+  </a>
+  <p>
+   <b>4.2. Tests.</b>
+  </p>
+  <p align="justify">
+   If a
+   <a href="#procedures">
+    procedure
+   </a>
+   is said to <i>test for</i> something, then it will return either
+   <a href="#boolean">
+    <tt>nil</tt>
+   </a>
+   or
+   <a href="#boolean">
+    <tt>true,</tt>
+   </a>
+   depending on whether its arguments have the property being tested for. By
+   convention, the names of most such procedures begin with <tt>is.</tt>
+   For example,
+   <a href="#isCons">
+    <tt>isCons</tt>
+   </a>
+   tests if its argument is a
+   <a href="#conses">
+    cons.
+   </a>
+  </p>
+  <a name="primitives">
+  </a>
+  <p>
+   <b>4.3. Primitives.</b>
+  </p>
+  <p align="justify">
+   Scam provides many primitive procedures. Each primitive procedure is
+   implemented as a
+   <a href="#hooks">
+    hook.
+   </a>
+   <a href="#names">
+    Names
+   </a>
+   are
+   <a href="#bindings">
+    bound
+   </a>
+   to these hooks so they may be used in programs. These names may be rebound
+   to other objects.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The next few sections describe all of
+   Scam&rsquo;s primitive procedures. The title of each section shows an
+   application of the primitive procedure that the section describes. The
+   <a href="#names">
+    names
+   </a>
+   shown as the application&rsquo;s arguments describe their expected types, as
+   in the following table.
+  </p>
+  <table align="center" border="1" cellpadding="3" cellspacing="0">
+   <tr bgcolor="#D3D3D3" valign="top">
+    <td>
+     <p align="center">
+      &nbsp;<b><small>ARGUMENT</small></b> &nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="center">
+      &nbsp;<b><small>EXPECTED TYPE</small></b> &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>b</i> or <i>o</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;Any
+      <a href="#objects">
+       object.
+      </a>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>c</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;A
+      <a href="#conses">
+       cons.
+      </a>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>k</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;An
+      <a href="#integers">
+       integer.
+      </a>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>n</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;A
+      <a href="#names">
+       name.
+      </a>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>p</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;A
+      <a href="#procedures">
+       procedure.
+      </a>
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p align="center">
+      <i>s</i>
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;A
+      <a href="#strings">
+       string.
+      </a>
+     </p>
+    </td>
+   </tr>
+  </table>
+  <p align="justify">
+   For example, the section titled
+   <tt>(car</tt>&nbsp;<i>c</i><tt>)</tt> describes a primitive
+   procedure to which the name
+   <a href="#car">
+    <tt>car</tt>
+   </a>
+   is bound. This procedure expects one argument <i>c,</i> which must be a
+   <a href="#conses">
+    cons.
+   </a>
+  </p>
+  <a name="and">
+  </a>
+  <p>
+   <b>4.3.1.</b> <tt>(and</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments in order of their appearance. If one of the arguments
+   returns
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   then return <tt>nil</tt> immediately without evaluating the rest.
+   Otherwise return the value of the last argument. The application
+   <tt>(and)</tt> returns
+   <a href="#boolean">
+    <tt>true.</tt>
+   </a>
+  </p>
+  <a name="car">
+  </a>
+  <p>
+   <b>4.3.2.</b> <tt>(car</tt> <i>c</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the <tt>car</tt> of the
+   <a href="#conses">
+    cons
+   </a>
+   <i>c.</i>
+  </p>
+  <a name="caxr">
+  </a>
+  <p>
+   <b>4.3.3.</b>
+   <tt>(ca</tt><i>x</i><tt>r</tt>&nbsp;<i>c</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Equivalent to
+   <tt>(car</tt>&nbsp;<tt>(c</tt><i>x</i><tt>r</tt>&nbsp;<i>c</i><tt>)),</tt>
+   where <i>x</i> is a series of one or more <tt>a</tt>&rsquo;s and
+   <tt>d</tt>&rsquo;s. See
+   <a href="#car">
+    <tt>car</tt>
+   </a>
+   and
+   <a href="#cdr">
+    <tt>cdr.</tt>
+   </a>
+  </p>
+  <a name="catch">
+  </a>
+  <p>
+   <b>4.3.4.</b> <tt>(catch</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   If none of the arguments applies
+   <a href="#throw">
+    <tt>throw,</tt>
+   </a>
+   then evaluate the arguments in order of their appearance, and return the
+   value of the last argument, as if they appeared in
+   <a href="#last">
+    <tt>last.</tt>
+   </a>
+   If one of the arguments evaluates
+   <tt>(throw</tt>&nbsp;<i>b</i><tt>)</tt> while it is not
+   evaluating another application of <tt>catch,</tt> then terminate the
+   application of <tt>catch</tt> immediately, and return the value of
+   <i>b.</i>
+  </p>
+  <a name="cdr">
+  </a>
+  <p>
+   <b>4.3.5.</b> <tt>(cdr</tt> <i>c</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the cdr of the
+   <a href="#conses">
+    cons
+   </a>
+   <i>c.</i>
+  </p>
+  <a name="cdxr">
+  </a>
+  <p>
+   <b>4.3.6.</b>
+   <tt>(cd</tt><i>x</i><tt>r</tt>&nbsp;<i>c</i><tt>).</tt>
+  </p>
+  <p align="justify">
+   Equivalent to
+   <tt>(cdr</tt>&nbsp;<tt>(c</tt><i>x</i><tt>r</tt>&nbsp;<i>c</i><tt>)),</tt>
+   where <i>x</i> is a series of one or more <tt>a</tt>&rsquo;s and
+   <tt>d</tt>&rsquo;s. See
+   <a href="#car">
+    <tt>car</tt>
+   </a>
+   and
+   <a href="#cdr">
+    <tt>cdr.</tt>
+   </a>
+  </p>
+  <a name="cons">
+  </a>
+  <p>
+   <b>4.3.7.</b> <tt>(cons</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#conses">
+    cons
+   </a>
+   whose car is the value of the first argument, and whose cdr is the value of
+   the second. See
+   <a href="#car">
+    <tt>car</tt>
+   </a>
+   and
+   <a href="#cdr">
+    <tt>cdr.</tt>
+   </a>
+  </p>
+  <a name="cr">
+  </a>
+  <p>
+   <b>4.3.8.</b> <tt>(cr</tt>&nbsp;<i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return <i>o.</i>
+  </p>
+  <a name="define">
+  </a>
+  <p>
+   <b>4.3.9.</b> <tt>(define</tt> <i>n o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Equivalent to
+   <tt>(set</tt>&nbsp;<i>n</i>&nbsp;<i>o</i><tt>).</tt> See
+   <a href="#set">
+    <tt>set.</tt>
+   </a>
+  </p>
+  <a name="first">
+  </a>
+  <p>
+   <b>4.3.10.</b> <tt>(first</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments in order of their appearance, and return the value of
+   the first argument. The application <tt>(first)</tt> returns
+   <a href="#boolean">
+    <tt>nil.</tt>
+   </a>
+  </p>
+  <a name="if">
+  </a>
+  <p>
+   <b>4.3.11.</b> <tt>(if</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> <i>o</i><sub>3</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the first argument. If it returns
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   then evaluate the third argument and return its value. If it returns an
+   <a href="#objects">
+    object
+   </a>
+   other than <tt>nil,</tt> then evaluate the second argument and return
+   its value instead. The application
+   <tt>(if</tt>&nbsp;<i>b</i>&nbsp;<i>o</i><tt>)</tt> is
+   equivalent to
+   <tt>(if</tt>&nbsp;<i>b</i>&nbsp;<i>o</i>&nbsp;<tt>nil)</tt>.
+  </p>
+  <a name="imply">
+  </a>
+  <p>
+   <b>4.3.12.</b> <tt>(imply</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments, except the last, in order of appearance. If one of
+   the arguments returns
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   then return
+   <a href="#boolean">
+    <tt>true</tt>
+   </a>
+   immediately, without evaluating the rest. Otherwise evaluate the last
+   argument and return its value.
+  </p>
+  <a name="include">
+  </a>
+  <p>
+   <b>4.3.13.</b> <tt>(include</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   If <i>s</i> has already appeared in a call to <tt>include,</tt>
+   then do nothing. Otherwise
+   <a href="#load">
+    <tt>load</tt>
+   </a>
+   the file whose pathname is <i>s.</i> In either case, return
+   <i>s.</i>
+  </p>
+  <a name="intAdd">
+  </a>
+  <p>
+   <b>4.3.14.</b> <tt>(intAdd</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub> ...
+   <i>k<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Add the
+   <a href="#integers">
+    integer
+   </a>
+   arguments in order of their appearance, and return the resulting integer.
+   The application <tt>(intAdd)</tt> returns <tt>0,</tt> and the
+   application <tt>(intAdd</tt>&nbsp;<i>k</i><tt>)</tt> returns
+   the value of <i>k.</i>
+  </p>
+  <a name="intAnd">
+  </a>
+  <p>
+   <b>4.3.15.</b> <tt>(intAnd</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub> ...
+   <i>k<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Compute the bitwise logical <small>AND</small> of the
+   <a href="#integers">
+    integer
+   </a>
+   arguments, and return the resulting integer. The application
+   <tt>(intAnd)</tt> returns <tt>&#8211;1,</tt> and the application
+   <tt>(intAnd</tt>&nbsp;<i>k</i><tt>)</tt> returns the value of
+   <i>k.</i>
+  </p>
+  <a name="intDiv">
+  </a>
+  <p>
+   <b>4.3.16.</b> <tt>(intDiv</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Divide the first
+   <a href="#integers">
+    integer
+   </a>
+   by the second, and return the resulting integer. It is an
+   <a href="#errors">
+    error
+   </a>
+   if the second integer is <tt>0.</tt>
+  </p>
+  <a name="intEq">
+  </a>
+  <p>
+   <b>4.3.17.</b> <tt>(intEq</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if the two
+   <a href="#integers">
+    integers
+   </a>
+   are equal.
+  </p>
+  <a name="intGe">
+  </a>
+  <p>
+   <b>4.3.18.</b> <tt>(intGe</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if the first
+   <a href="#integers">
+    integer
+   </a>
+   is greater than or equal to the second.
+  </p>
+  <a name="intGt">
+  </a>
+  <p>
+   <b>4.3.19.</b> <tt>(intGt</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if the first
+   <a href="#integers">
+    integer
+   </a>
+   is greater than the second.
+  </p>
+  <a name="intLe">
+  </a>
+  <p>
+   <b>4.3.20.</b> <tt>(intLe</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if the first
+   <a href="#integers">
+    integer
+   </a>
+   is less than or equal to the second.
+  </p>
+  <a name="intLt">
+  </a>
+  <p>
+   <b>4.3.21.</b> <tt>(intLt</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if the first
+   <a href="#integers">
+    integer
+   </a>
+   is less than the second.
+  </p>
+  <a name="intMod">
+  </a>
+  <p>
+   <b>4.3.22.</b> <tt>(intMod</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the remainder after dividing the first
+   <a href="#integers">
+    integer
+   </a>
+   by the second. It is an
+   <a href="#errors">
+    error
+   </a>
+   if the second integer is <tt>0.</tt>
+  </p>
+  <a name="intMul">
+  </a>
+  <p>
+   <b>4.3.23.</b> <tt>(intMul</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub> ...
+   <i>k<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Multiply the
+   <a href="#integers">
+    integer
+   </a>
+   arguments in order of their appearance, and return the resulting integer.
+   The application <tt>(intMul)</tt> returns <tt>1,</tt> and the
+   application <tt>(intMul</tt>&nbsp;<i>k</i><tt>)</tt> returns
+   the value of <i>k.</i>
+  </p>
+  <a name="intNe">
+  </a>
+  <p>
+   <b>4.3.24.</b> <tt>(intNe</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if two
+   <a href="#integers">
+    integers
+   </a>
+   are not equal.
+  </p>
+  <a name="intNeg">
+  </a>
+  <p>
+   <b>4.3.25.</b> <tt>(intNeg</tt> <i>k</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the
+   <a href="#integers">
+    integer
+   </a>
+   <i>k</i> with the opposite of its original sign.
+  </p>
+  <a name="intNot">
+  </a>
+  <p>
+   <b>4.3.26.</b> <tt>(intNot</tt> <i>k</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the bitwise logical <small>NOT</small> of the
+   <a href="#integers">
+    integer
+   </a>
+   <i>k.</i>
+  </p>
+  <a name="intOr">
+  </a>
+  <p>
+   <b>4.3.27.</b> <tt>(intOr</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub> ...
+   <i>k<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Compute the bitwise logical <small>OR</small> of the
+   <a href="#integers">
+    integer
+   </a>
+   arguments, and return the resulting integer. The application
+   <tt>(intOr)</tt> returns <tt>0,</tt> and the application
+   <tt>(intOr</tt>&nbsp;<i>k</i><tt>)</tt> returns the value of
+   <i>k.</i>
+  </p>
+  <a name="intSub">
+  </a>
+  <p>
+   <b>4.3.28.</b> <tt>(intSub</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Subtract the first
+   <a href="#integers">
+    integer
+   </a>
+   from the second and return the resulting integer.
+  </p>
+  <a name="intXor">
+  </a>
+  <p>
+   <b>4.3.29.</b> <tt>(intXor</tt> <i>k</i><sub>1</sub>
+   <i>k</i><sub>2</sub> ...
+   <i>k<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Compute the bitwise logical exclusive <small>OR</small> of the
+   <a href="#integers">
+    integer
+   </a>
+   arguments, and return the resulting integer. The application
+   <tt>(intXor)</tt> returns <tt>&#8211;1</tt>, and the application
+   <tt>(intXor</tt>&nbsp;<i>k</i><tt>)</tt> returns the value of
+   <i>k.</i>
+  </p>
+  <a name="isCons">
+  </a>
+  <p>
+   <b>4.3.30.</b> <tt>(isCons</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is a
+   <a href="#conses">
+    cons.
+   </a>
+  </p>
+  <a name="isHook">
+  </a>
+  <p>
+   <b>4.3.31.</b> <tt>(isHook</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is a
+   <a href="#hooks">
+    hook.
+   </a>
+  </p>
+  <a name="isEof">
+  </a>
+  <p>
+   <b>4.3.32.</b> <tt>(isEof</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is an
+   <a href="#eofs">
+    eof.
+   </a>
+  </p>
+  <a name="isInt">
+  </a>
+  <p>
+   <b>4.3.33.</b> <tt>(isInt</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is an
+   <a href="#integers">
+    integer.
+   </a>
+  </p>
+  <a name="isLambda">
+  </a>
+  <p>
+   <b>4.3.34.</b> <tt>(isLambda</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is a
+   <a href="#lambdas">
+    lambda.
+   </a>
+  </p>
+  <a name="isName">
+  </a>
+  <p>
+   <b>4.3.35.</b> <tt>(isName</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is a
+   <a href="#names">
+    name.
+   </a>
+  </p>
+  <a name="isNil">
+  </a>
+  <p>
+   <b>4.3.36.</b> <tt>(isNil</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is
+   <a href="#boolean">
+    <tt>nil.</tt>
+   </a>
+   See
+   <a href="#not">
+    <tt>not.</tt>
+   </a>
+  </p>
+  <a name="isString">
+  </a>
+  <p>
+   <b>4.3.37.</b> <tt>(isString</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is a
+   <a href="#strings">
+    string.
+   </a>
+  </p>
+  <a name="isGreekLambda">
+  </a>
+  <p>
+   <b>4.3.38.</b> <tt>(is&#955;</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Test if <i>o</i> is a
+   <a href="#lambdas">
+    lambda.
+   </a>
+   Equivalent to <tt>(isLambda</tt> <i>o</i><tt>).</tt>
+  </p>
+  <a name="lambda">
+  </a>
+  <p>
+   <b>4.3.39.</b> <tt>(lambda (</tt><i>n</i><sub>1</sub>
+   <i>n</i><sub>2</sub> ...
+   <i>n<sub>m</sub></i><tt>)</tt> <i>b</i><sub>1</sub>
+   <i>b</i><sub>2</sub> ...
+   <i>b<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a new
+   <a href="#lambdas">
+    lambda
+   </a>
+   whose parameters are the subscripted <i>n</i>&rsquo;s. When the lambda
+   is applied, its parameters are
+   <a href="#bindings">
+    bound
+   </a>
+   to their corresponding arguments. The subscripted <i>b</i>&rsquo;s are
+   then evaluated in order of appearance, as if they appeared in an application
+   to
+   <a href="#last">
+    <tt>last.</tt>
+   </a>
+   The application then restores the parameters to their original bindings (or
+   lack of bindings) and returns the value of the last subscripted
+   <i>b.</i> Also see
+   <a href="#greekLambda">
+    <tt>&#955;.</tt>
+   </a>
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There must be at least one subscripted
+   <i>b,</i> but there may be zero subscripted <i>n</i>&rsquo;s, so
+   that
+   <tt>(lambda</tt>&nbsp;<tt>()</tt>&nbsp;<i>b</i><tt>)</tt>
+   returns a lambda with no parameters. It is an
+   <a href="#errors">
+    error
+   </a>
+   if any subscripted <i>n</i> appears more than once as a parameter in a
+   single call to <tt>lambda.</tt>
+  </p>
+  <a name="last">
+  </a>
+  <p>
+   <b>4.3.40.</b> <tt>(last</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments in order of their appearance, and return the value of
+   the last one. The application <tt>(last)</tt> returns
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   and the application <tt>(last</tt>&nbsp;<i>o</i><tt>)</tt>
+   returns the value of <i>o.</i>
+  </p>
+  <a name="let">
+  </a>
+  <p>
+   <b>4.3.41.</b> <tt>(let ((</tt><i>n</i><sub>1</sub>
+   <i>o</i><sub>1</sub><tt>)
+   (</tt><i>n</i><sub>2</sub>
+   <i>o</i><sub>2</sub><tt>)</tt> ...
+   <tt>(</tt><i>n<sub>m</sub>
+   o<sub>m</sub></i><tt>))</tt> <i>b</i><sub>1</sub>
+   <i>b</i><sub>2</sub> ...
+   <i>b<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Simultaneously
+   <a href="#bindings">
+    bind
+   </a>
+   each subscripted <i>n</i> to the value of its corresponding subscripted
+   <i>o.</i> Then evaluate the subscripted <i>b</i>&rsquo;s in order
+   of their appearance, as if they appeared in an application of
+   <a href="#last">
+    <tt>last.</tt>
+   </a>
+   Finally, restore the parameters to their original bindings (or lack of
+   bindings) and return the value of the last subscripted <i>b.</i>
+  </p>
+  <a name="list">
+  </a>
+  <p>
+   <b>4.3.42.</b> <tt>(list</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments in order of their appearance and return a
+   <a href="#lists">
+    list
+   </a>
+   whose elements are the values of these arguments. The application
+   <tt>(list)</tt> returns <tt>nil.</tt>
+  </p>
+  <a name="load">
+  </a>
+  <p>
+   <b>4.3.43.</b> <tt>(load</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Open a file whose pathname is <i>s.</i> The file must have the suffix
+   <tt>.scam.</tt> Read a Scam program from this file and evaluate it,
+   then close the file and return <i>s.</i> It is an
+   <a href="#errors">
+    error
+   </a>
+   if the file cannot be opened, if the Scam program read from the file has
+   errors, or if the file cannot be closed.
+  </p>
+  <a name="nameStr">
+  </a>
+  <p>
+   <b>4.3.44.</b> <tt>(nameStr</tt> <i>n</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#strings">
+    string
+   </a>
+   whose characters are those of the
+   <a href="#names">
+    name
+   </a>
+   <i>n.</i>
+  </p>
+  <a name="not">
+  </a>
+  <p>
+   <b>4.3.45.</b> <tt>(not</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if <i>o</i> is
+   <a href="#boolean">
+    <tt>nil.</tt>
+   </a>
+   See
+   <a href="#isNil">
+    <tt>isNil.</tt>
+   </a>
+  </p>
+  <a name="objEq">
+  </a>
+  <p>
+   <b>4.3.46.</b> <tt>(objEq</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if two
+   <a href="#objects">
+    objects
+   </a>
+   reside at the same memory address: that is, test if they are identical
+   objects.
+  </p>
+  <a name="objLen">
+  </a>
+  <p>
+   <b>4.3.47.</b> <tt>(objLen</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   If the
+   <a href="#objects">
+    object
+   </a>
+   <i>o</i> is a
+   <a href="#lists">
+    list,
+   </a>
+   then return the number of elements in the list, an
+   <a href="#integers">
+    integer.
+   </a>
+   The number of elements in the empty list <tt>nil</tt> or
+   <tt>()</tt> is <tt>0.</tt> It is an
+   <a href="#errors">
+    error
+   </a>
+   if the list appears to have an infinite number of elements because it is
+   circular. If <i>o</i> is not a list, then return <tt>0.</tt>
+  </p>
+  <a name="objNe">
+  </a>
+  <p>
+   <b>4.3.48.</b> <tt>(objNe</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if two
+   <a href="#objects">
+    objects
+   </a>
+   reside at different memory addresses: that is, test if they are not
+   identical objects.
+  </p>
+  <a name="objWrite">
+  </a>
+  <p>
+   <b>4.3.49.</b> <tt>(objWrite</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Write the
+   <a href="#objects">
+    object
+   </a>
+   <i>o</i> to the standard output device, in such a way that it may be
+   read back in again.
+  </p>
+  <a name="or">
+  </a>
+  <p>
+   <b>4.3.50.</b> <tt>(or</tt> <i>o</i><sub>1</sub>
+   <i>o</i><sub>2</sub> ...
+   <i>o<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Evaluate the arguments in order of their appearance. If one of the arguments
+   returns a value other than
+   <a href="#boolean">
+    <tt>nil,</tt>
+   </a>
+   then return the value of that argument immediately, without evaluating the
+   rest. Otherwise return <tt>nil.</tt> The application <tt>(or)</tt>
+   returns <tt>nil.</tt>
+  </p>
+  <a name="quit">
+  </a>
+  <p>
+   <b>4.3.51.</b> <tt>(quit</tt> <i>k</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Halt Scam and pass the value of the
+   <a href="#integers">
+    integer
+   </a>
+   <i>k</i> back to the operating system. By convention, passing
+   <tt>0</tt> to the operating system indicates that Scam has halted
+   successfully, and an integer other than <tt>0</tt> indicates that it
+   has halted with an error. The application <tt>(quit)</tt> is equivalent
+   to <tt>(quit</tt>&nbsp;<tt>0).</tt>
+  </p>
+  <a name="quote">
+  </a>
+  <p>
+   <b>4.3.52.</b> <tt>(quote</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return <i>o</i> without evaluating it. The application
+   <tt>(quote</tt>&nbsp;<i>o</i><tt>)</tt> may be abbreviated as
+   <tt>&lsquo;</tt><i>o</i> (with an open quote) or as
+   <tt>&rsquo;</tt><i>o</i> (with a closing quote). Note that an open
+   quote does not act the way it does in Common Lisp
+   <a href="#gls1990">
+    [<small>GLS</small> 1990.]
+   </a>
+  </p>
+  <a name="set">
+  </a>
+  <p>
+   <b>4.3.53.</b> <tt>(set</tt> <i>n o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Bind the unevaluated name <i>n</i> to the value returned by evaluating
+   the
+   <a href="#objects">
+    object
+   </a>
+   <i>o.</i>
+  </p>
+  <a name="setCar">
+  </a>
+  <p>
+   <b>4.3.54.</b> <tt>(setCar</tt> <i>c o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Change the car of the
+   <a href="#conses">
+    cons
+   </a>
+   <i>c</i> to the
+   <a href="#objects">
+    object
+   </a>
+   <i>o,</i> and return <i>o.</i> This may be used to create circular
+   <a href="#lists">
+    lists.
+   </a>
+  </p>
+  <a name="setCdr">
+  </a>
+  <p>
+   <b>4.3.55.</b> <tt>(setCdr</tt> <i>c o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Change the cdr of the
+   <a href="#conses">
+    cons
+   </a>
+   <i>s</i> to the
+   <a href="#objects">
+    object
+   </a>
+   <i>o,</i> and return <i>o.</i> This may be used to create circular
+   <a href="#lists">
+    lists.
+   </a>
+  </p>
+  <a name="strAdd">
+  </a>
+  <p>
+   <b>4.3.56.</b> <tt>(strAdd</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub> ...
+   <i>s<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Concatenate the
+   <a href="#strings">
+    strings
+   </a>
+   returned by the arguments into one string, and return the resulting string.
+   The application <tt>(strAdd)</tt> returns the empty string
+   <tt>"",</tt> and the application
+   <tt>(strAdd</tt>&nbsp;<i>s</i><tt>)</tt> returns the string
+   <i>s.</i>
+  </p>
+  <a name="strDate">
+  </a>
+  <p>
+   <b>4.3.57.</b> <tt>(strDate)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#strings">
+    string
+   </a>
+   containing the day of the week, the date, the time, and the time zone. For
+   example,
+   <tt>"Monday,</tt>&nbsp;<tt>May</tt>&nbsp;<tt>16,</tt>&nbsp;<tt>2011</tt>&nbsp;<tt>at</tt>&nbsp;<tt>8:30</tt>&nbsp;<tt>PM</tt>&nbsp;<tt>CDT".</tt>
+  </p>
+  <a name="strEq">
+  </a>
+  <p>
+   <b>4.3.58.</b> <tt>(strEq</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if two
+   <a href="#strings">
+    strings
+   </a>
+   are lexicographically equal.
+  </p>
+  <a name="strGe">
+  </a>
+  <p>
+   <b>4.3.59.</b> <tt>(strGe</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if one
+   <a href="#strings">
+    string
+   </a>
+   is lexicographically greater than or equal to another.
+  </p>
+  <a name="strGt">
+  </a>
+  <p>
+   <b>4.3.60.</b> <tt>(strGt</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if one
+   <a href="#strings">
+    string
+   </a>
+   is lexicographically greater than another.
+  </p>
+  <a name="strLe">
+  </a>
+  <p>
+   <b>4.3.61.</b> <tt>(strLe</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if one
+   <a href="#strings">
+    string
+   </a>
+   is lexicographically less than or equal to another.
+  </p>
+  <a name="strLen">
+  </a>
+  <p>
+   <b>4.3.62.</b> <tt>(strLen</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the
+   <a href="#integers">
+    integer
+   </a>
+   number of characters in the
+   <a href="#strings">
+    string
+   </a>
+   <i>s.</i>
+  </p>
+  <a name="strLow">
+  </a>
+  <p>
+   <b>4.3.63.</b> <tt>(strLow</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#strings">
+    string
+   </a>
+   like <i>s</i> in which all upper case Roman letters
+   (<tt>A</tt>&#8211;<tt>Z</tt>) are converted to lower case. Also
+   see
+   <a href="#strUp">
+    <tt>strUp.</tt>
+   </a>
+  </p>
+  <a name="strLt">
+  </a>
+  <p>
+   <b>4.3.64.</b> <tt>(strLt</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if one
+   <a href="#strings">
+    string
+   </a>
+   is lexicographically less than another.
+  </p>
+  <a name="strName">
+  </a>
+  <p>
+   <b>4.3.65.</b> <tt>(strName</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#names">
+    name
+   </a>
+   whose characters are those of the
+   <a href="#strings">
+    string
+   </a>
+   <i>s.</i>
+  </p>
+  <a name="strNe">
+  </a>
+  <p>
+   <b>4.3.66.</b> <tt>(strNe</tt> <i>s</i><sub>1</sub>
+   <i>s</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   <a href="#tests">
+    Test
+   </a>
+   if two
+   <a href="#strings">
+    strings
+   </a>
+   are lexicographically unequal.
+  </p>
+  <a name="strRead">
+  </a>
+  <p>
+   <b>4.3.67.</b> <tt>(strRead)</tt>
+  </p>
+  <p align="justify">
+   Read a line of text from the standard input device, and return it as a
+   <a href="#strings">
+    string.
+   </a>
+   Return an
+   <a href="#eofs">
+    eof
+   </a>
+   if there are no more lines left to read.
+  </p>
+  <a name="strSub">
+  </a>
+  <p>
+   <b>4.3.68.</b> <tt>(strSub</tt> <i>s k</i><sub>1</sub>
+   <i>k</i><sub>2</sub><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a substring of the
+   <a href="#strings">
+    string
+   </a>
+   <i>s</i> starting at the first
+   <a href="#integers">
+    integer
+   </a>
+   index, and ending with the second integer index minus 1. (Common Lisp
+   <a href="#gls1990">
+    [<small>GLS</small> 1990]
+   </a>
+   indexes also work this way.) It is an
+   <a href="#errors">
+    error
+   </a>
+   if the indexes are out of range for the string <i>s.</i> The
+   application
+   <tt>(strSub</tt>&nbsp;<i>s</i>&nbsp;<i>k</i><tt>)</tt>
+   is equivalent to
+   <tt>(strSub</tt>&nbsp;<i>s</i>&nbsp;<i>k</i>&nbsp;<tt>(strLen</tt>&nbsp;<i>s</i><tt>)),</tt>
+   except that <i>s</i> is evaluated only once. See
+   <a href="#strLen">
+    <tt>strLen</tt>
+   </a>
+   and
+   <a href="#strSub">
+    <tt>strSub.</tt>
+   </a>
+  </p>
+  <a name="strUp">
+  </a>
+  <p>
+   <b>4.3.69.</b> <tt>(strUp</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return a
+   <a href="#strings">
+    string
+   </a>
+   like <i>s</i> in which all lower case Roman letters
+   (<tt>a</tt>&#8211;<tt>z</tt>) are converted to upper case. Also
+   see
+   <a href="#strLow">
+    <tt>strLow.</tt>
+   </a>
+  </p>
+  <a name="strWrite">
+  </a>
+  <p>
+   <b>4.3.70.</b> <tt>(strWrite</tt> <i>s</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Write the
+   <a href="#strings">
+    string
+   </a>
+   <i>s</i> to the standard output device, without any punctuation such as
+   double quotes &lsquo;<tt>"</tt>&rsquo; or backslashes
+   &lsquo;<tt>\</tt>&rsquo;. Then return <i>s.</i>
+  </p>
+  <a name="throw">
+  </a>
+  <p>
+   <b>4.3.71.</b> <tt>(throw</tt> <i>o</i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Return the value of <i>o</i> from the most recent application of
+   <a href="#catch">
+    <tt>catch</tt>
+   </a>
+   that is currently executing. It is an
+   <a href="#errors">
+    error
+   </a>
+   if no application of <tt>catch</tt> is being executed.
+  </p>
+  <a name="greekLambda">
+  </a>
+  <p>
+   <b>4.3.72.</b> <tt>(&#955; (</tt><i>n</i><sub>1</sub>
+   <i>n</i><sub>2</sub> ...
+   <i>n<sub>m</sub></i><tt>)</tt> <i>b</i><sub>1</sub>
+   <i>b</i><sub>2</sub> ...
+   <i>b<sub>n</sub></i><tt>)</tt>
+  </p>
+  <p align="justify">
+   Equivalent to <tt>(lambda (</tt><i>n</i><sub>1</sub>
+   <i>n</i><sub>2</sub> ...
+   <i>n<sub>m</sub></i><tt>)</tt> <i>b</i><sub>1</sub>
+   <i>b</i><sub>2</sub> ...
+   <i>b<sub>n</sub></i><tt>).</tt> See
+   <a href="#lambda">
+    <tt>lambda.</tt>
+   </a>
+  </p>
+  <hr />
+  <a name="programs">
+  </a>
+  <p>
+   <b>5. Programs.</b>
+  </p>
+  <p align="justify">
+   A Scam program is typically a series of
+   <a href="#define">
+    <tt>define</tt>&rsquo;s
+   </a>
+   that
+   <a href="#bindings">
+    bind
+   </a>
+   various
+   <a href="#names">
+    names
+   </a>
+   to
+   <a href="#lambdas">
+    lambdas.
+   </a>
+   The names may be bound in any order, and the lambdas may call each other
+   freely. For example, the following program implements a symbolic equation
+   solver for middle school algebra. It can solve for any variable that appears
+   exactly once in an equation. The equation may use the 2-ary operators
+   &lsquo;<tt>+</tt>&rsquo;, &lsquo;<tt>&#8211;</tt>&rsquo;,
+   &lsquo;<tt>&#215;</tt>&rsquo;, and &lsquo;<tt>/</tt>&rsquo;.
+  </p>
+  <blockquote>
+   <p>
+    <tt>;&nbsp;</tt> Solve the equation <tt>leftSide</tt> =
+    <tt>rightSide</tt> for <tt>variable.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solve&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;rightSide&nbsp;leftSide)))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Solve when <tt>variable</tt> appears in
+    <tt>leftSide.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solving&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(objEq&nbsp;variable&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;=&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(objEq&nbsp;(operator&nbsp;leftSide)&nbsp;&lsquo;+)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(solvingAdd&nbsp;variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(objEq&nbsp;(operator&nbsp;leftSide)&nbsp;&lsquo;&#8211;)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solvingSubtract&nbsp;variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(objEq&nbsp;(operator&nbsp;leftSide)&nbsp;&lsquo;&#215;)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solvingMultiply&nbsp;variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(objEq&nbsp;(operator&nbsp;leftSide)&nbsp;&lsquo;/)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(solvingDivide&nbsp;variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(throw&nbsp;"Unknown&nbsp;operator.")))))))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Solve when <tt>variable</tt> is in
+    <tt>leftSide,</tt> whose outer operator is <tt>+.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solvingAdd&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(left&nbsp;leftSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(left&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;&#8211;&nbsp;rightSide&nbsp;(right&nbsp;leftSide)))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(right&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;&#8211;&nbsp;rightSide&nbsp;(left&nbsp;leftSide)))))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Solve when <tt>variable</tt> is in
+    <tt>leftSide,</tt> whose outer operator is <tt>&#8211;.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solvingSubtract&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(left&nbsp;leftSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(left&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;+&nbsp;(right&nbsp;leftSide)&nbsp;rightSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(right&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;&#8211;&nbsp;(left&nbsp;leftSide)&nbsp;rightSide))))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Solve when <tt>variable</tt> is in
+    <tt>leftSide,</tt> whose outer operator is <tt>&#215;.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solvingMultiply&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(left&nbsp;leftSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(left&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;/&nbsp;rightSide&nbsp;(right&nbsp;leftSide)))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(right&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;/&nbsp;rightSide&nbsp;(left&nbsp;leftSide)))))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Solve when <tt>variable</tt> is in
+    <tt>leftSide,</tt> whose outer operator is <tt>/.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;solvingDivide&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;leftSide&nbsp;rightSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(left&nbsp;leftSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(left&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;&#215;&nbsp;(right&nbsp;leftSide)&nbsp;rightSide))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(solving&nbsp;variable&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(right&nbsp;leftSide)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;&lsquo;/&nbsp;(left&nbsp;leftSide)&nbsp;rightSide))))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Test if <tt>variable</tt> appears inside
+    <tt>expression.</tt>
+   </p>
+   <p>
+    <tt>(define&nbsp;isInside&nbsp;</tt>
+    <br />
+    <tt>&nbsp;(&#955;&nbsp;(variable&nbsp;expression)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(isName&nbsp;expression)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(objEq&nbsp;variable&nbsp;expression)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;(if&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(isCons&nbsp;expression)&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;(or&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(left&nbsp;expression))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(isInside&nbsp;variable&nbsp;(right&nbsp;expression)))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;&nbsp;&nbsp;&nbsp;false)))&nbsp;)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Return the outer operator of an expression.
+   </p>
+   <p>
+    <tt>(define&nbsp;operator&nbsp;car)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Return the left argument of an expression.
+   </p>
+   <p>
+    <tt>(define&nbsp;left&nbsp;cadr)</tt>
+   </p>
+   <p>
+    <tt>;&nbsp;</tt> Return the right argument of an expression.
+   </p>
+   <p>
+    <tt>(define&nbsp;right&nbsp;caddr)</tt>
+   </p>
+  </blockquote>
+  <hr />
+  <a name="running">
+  </a>
+  <p>
+   <b>6. Running Scam.</b>
+  </p>
+  <p align="justify">
+   When you invoke Scam from the shell, it responds with the prompt
+   &lsquo;<tt>Q:</tt>&rsquo;. If you type a Scam expression at the prompt,
+   then it will be evaluated, and the
+   <a href="#objects">
+    object
+   </a>
+   it returns will be written to standard output, prefixed by
+   &lsquo;<tt>A:</tt>&rsquo;. Note that Scam has no way to correct errors
+   in multi-line inputs. If you make a typing mistake that can&rsquo;t be fixed
+   by backspacing, then all you can do is press control-C, which will throw
+   away what you&rsquo;ve typed, and get you another
+   &lsquo;<tt>Q:</tt>&rsquo; prompt.
+   <br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You can run the equation solving
+   <a href="#programs">
+    program
+   </a>
+   shown above by applying
+   <a href="#load">
+    <tt>load.</tt>
+   </a>
+   Its argument is the pathname of the file that contains the program. The
+   following shows how the program solves the equation
+   <i>y</i>&nbsp;=&nbsp;<i>mx</i>&nbsp;+&nbsp;<i>b</i> for
+   <i>x.</i> The solution is
+   <i>x</i>&nbsp;=&nbsp;(<i>y</i>&nbsp;&#8211;&nbsp;<i>b</i>)&nbsp;/&nbsp;<i>m.</i>
+  </p>
+  <blockquote>
+   <p>
+    <tt>Q:&nbsp;(load&nbsp;"scam/equation.scam")&nbsp;</tt>
+    <br />
+    <tt>&nbsp;</tt>
+    <br />
+    <tt>A:&nbsp;"scam/equation.scam"&nbsp;</tt>
+    <br />
+    <tt>&nbsp;</tt>
+    <br />
+    <tt>Q:&nbsp;(solve&nbsp;&lsquo;x&nbsp;&lsquo;y&nbsp;&lsquo;(+&nbsp;(&#215;&nbsp;m&nbsp;x)&nbsp;b))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;</tt>
+    <br />
+    <tt>A:&nbsp;(=&nbsp;x&nbsp;(/&nbsp;(&#8211;&nbsp;y&nbsp;b)&nbsp;m))&nbsp;</tt>
+    <br />
+    <tt>&nbsp;</tt>
+    <br />
+    <tt>Q:&nbsp;(quit)</tt>
+   </p>
+  </blockquote>
+  <p align="justify">
+   Scam continues in this way, asking for expressions and evaluating them,
+   until you exit by typing control-D or applying
+   <a href="#quit">
+    <tt>quit.</tt>
+   </a>
+  </p>
+  <hr />
+  <a name="references">
+  </a>
+  <p align="center">
+   <b>References</b>
+  </p>
+  <table cellpadding="0" cellspacing="0">
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="gls1990">
+      </a>
+      [<small>GLS</small>&nbsp;1990]&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Guy L. Steele Jr. <i>Common Lisp: The Language.</i> Second Edition.
+      Digital Press. Bedford, Massachusetts. 1990.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="gre2000">
+      </a>
+      [<small>GRE</small>&nbsp;2000]&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Jonathon Green. <i>Cassell&rsquo;s Dictionary of Slang.</i> Cassell
+      and Company. London, United Kingdom. 2000.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="knr1988">
+      </a>
+      [<small>KNR</small>&nbsp;1988]&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Brian W. Kernighan, Dennis M. Ritchie. <i>The C Programming
+      Language.</i> Second edition. Prentice Hall. Upper Saddle River, New
+      Jersey. 1988.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="moe2014">
+      </a>
+      [<small>MOE</small>&nbsp;2014]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      James B. Moen. &lsquo;&lsquo;Revised&#8315;&#185; Report on the
+      Algorithmic Language Orson.&rsquo;&rsquo; Unpublished technical report.
+      2014.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="spe2007">
+      </a>
+      [<small>SPE</small>&nbsp;2007]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      Michael Sperber, R. Kent Dybvig, Matthew Flatt, Anton van Straaten,
+      editors. &lsquo;&lsquo;Revised&#8310; Report on the Algorithmic Language
+      Scheme.&rsquo;&rsquo; September 26, 2007.
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+    <td>
+     <p>
+      &nbsp;
+     </p>
+    </td>
+   </tr>
+   <tr valign="top">
+    <td>
+     <p>
+      <a name="uni2006">
+      </a>
+      [<small>UNI</small>&nbsp;2006]&nbsp;&nbsp;
+     </p>
+    </td>
+    <td>
+     <p align="justify">
+      The Unicode Consortium. <i>The Unicode Standard, Version 5.0.</i>
+      Fifth Edition. Addison-Wesley Professional. Reading, Massachusetts. 2006.
+     </p>
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>

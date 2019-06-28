@@ -1,0 +1,123 @@
+;
+;  SCAM/EQUATION. Solve equations by simple algebra.
+;
+;  Copyright © 2017 James B. Moen.
+;
+;  This  program is free  software: you  can redistribute  it and/or  modify it
+;  under the terms  of the GNU General Public License as  published by the Free
+;  Software Foundation,  either version 3 of  the License, or  (at your option)
+;  any later version.
+;
+;  This program is distributed in the  hope that it will be useful, but WITHOUT
+;  ANY  WARRANTY;  without even  the  implied  warranty  of MERCHANTABILITY  or
+;  FITNESS FOR  A PARTICULAR PURPOSE.  See  the GNU General  Public License for
+;  more details.
+;
+;  You should have received a copy of the GNU General Public License along with
+;  this program.  If not, see <http://www.gnu.org/licenses/>.
+;
+
+;  SOLVE. Solve the equation LEFT SIDE = RIGHT SIDE for VARIABLE. VARIABLE must
+;  appear exactly once in either LEFT SIDE or RIGHT SIDE.
+
+(define solve
+ (λ (variable left-side right-side)
+  (if
+   (isInside variable left-side)
+   (solving variable left-side right-side)
+   (solving variable right-side left-side))) )
+
+;  SOLVING. Do all the work for SOLVE.
+
+(define solving
+ (λ (variable left-side right-side)
+  (if
+   (objEq variable left-side)
+   (list `= left-side right-side)
+   (if
+    (objEq (operator left-side) `+)
+    (solving-add variable left-side right-side)
+    (if
+     (objEq (operator left-side) `-)
+     (solving-subtract variable left-side right-side)
+     (if
+      (objEq (operator left-side) `*)
+      (solving-multiply variable left-side right-side)
+      (if
+       (objEq (operator left-side) `/)
+       (solving-divide variable left-side right-side)
+       (error `unknown-operator))))))) )
+
+;  SOLVING ADD. Solve an equation whose top level operator is +.
+
+(define solving-add
+ (λ (variable left-side right-side)
+  (if
+   (isInside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list `- right-side (right left-side)))
+   (solving variable
+    (right left-side)
+    (list `- right-side (left left-side))))) )
+
+;  SOLVING SUBTRACT. Solve an equation whose top level operator is -.
+
+(define solving-subtract
+ (λ (variable left-side right-side)
+  (if
+   (isInside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list `+ (right left-side) right-side))
+   (solving variable
+    (right left-side)
+    (list `- (left left-side) right-side)))) )
+
+;  SOLVING MULTIPLY. Solve an equation whose top level operator is *.
+
+(define solving-multiply
+ (λ (variable left-side right-side)
+  (if
+   (isInside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list `/ right-side (right left-side)))
+   (solving variable
+    (right left-side)
+    (list `/ right-side (left left-side))))) )
+
+;  SOLVING DIVIDE. Solve an equation whose top level operator is /.
+
+(define solving-divide
+ (λ (variable left-side right-side)
+  (if
+   (isInside variable (left left-side))
+   (solving variable
+    (left left-side)
+    (list `* (right left-side) right-side))
+   (solving variable
+    (right left-side)
+    (list `/ (left left-side) right-side)))) )
+
+;  IS INSIDE. Test if VARIABLE appears in EXPRESSION.
+
+(define isInside
+ (λ (variable expression)
+  (if
+   (isName expression)
+   (objEq variable expression)
+   (if
+    (isCons expression)
+    (or
+     (isInside variable (left expression))
+     (isInside variable (right expression)))
+    false))) )
+
+;  OPERATOR, LEFT, RIGHT. Return parts of a TERM.
+
+(define operator car)
+
+(define left cadr)
+
+(define right caddr)
