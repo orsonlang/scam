@@ -3,11 +3,11 @@
                                  James B. Moen
                                January 17, 2014
 
-This  directory  contains source  files  for Scam,  an  interpreter  for a  toy
-language that is similar to a subset  of Scheme. It is written in Orson, and is
-intended to run under Unix-like systems, such as GNU/Linux. Scam was written to
-test  the  Orson  library’s  garbage  collector, signal  handler,  and  Unicode
-character  methods.  These  files  contain  Orson  source  code  for  the  Scam
+This directory contains source files for Scam, an interpreter for a toy language
+that is similar to a subset of Scheme. It is written in Orson, and is intended
+to run under Unix-like systems, such as GNU/Linux. Scam was written to test the
+Orson library’s garbage collector, signal handler, and Unicode character
+methods. The files in the scam/ directory contain Orson source code for the Scam
 interpreter. The allegedly interesting ones are marked with ‘✗’.
 
     char.os        Operations on characters.
@@ -28,15 +28,16 @@ interpreter. The allegedly interesting ones are marked with ‘✗’.
     text.os        Operations on texts.
     write.os       Write an object to a text file.
 
-These files  contain example  Scam programs  that can be  loaded into  the Scam
-interpreter.
+The files in the examples/ directory contain example Scam programs that can be
+loaded into the Scam interpreter.
 
     equation.scam  Solve equations by simple algebra.
     pasta.scam     Make random linked graphs to test the garbage collector.
     sort.scam      Sort a list according to an ordering predicate.
     utility.scam   Utility functions (boring).
 
-These files contain documentation and other supporting material.
+This file, the Makefile and the files in the doc/ directory contain
+documentation and other supporting material.
 
     Makefile       Compile, install, uninstall Scam.
     Manual.by      Bracy source for the Scam manual.
