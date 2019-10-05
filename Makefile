@@ -1,6 +1,7 @@
 #
 #  SCAM/MAKEFILE. Compile, install, uninstall Scam.
 #
+#  Copyright © 2019 James B. Moen and Jade Michael Thornton.
 #  Copyright © 2013 James B. Moen.
 #
 #  This  program is free  software: you  can redistribute  it and/or  modify it
@@ -37,8 +38,9 @@ mandir = $(prefix)/man/man1
 #  to do this.
 
 all:
-	orson scam.os
-	mv a.out scam
+	cd scam; \
+	orson scam.os; \
+	mv a.out ../scam
 
 #  CLEAN. Undo MAKE ALL. You need not be root to do this.
 
@@ -60,11 +62,12 @@ clean:
 install:
 	mkdir -p $(bindir)
 	mkdir -p $(mandir)
-	orson scam.os
+	cd scam; \
+	orson scam.os; \
 	mv a.out $(bindir)/scam
 	chown root $(bindir)/scam
 	chmod go-w+rx $(bindir)/scam
-	cp scam.1 $(mandir)/
+	cp doc/scam.1 $(mandir)/
 	chown root $(mandir)/scam.1
 	chmod go-wx+r $(mandir)/scam.1
 
